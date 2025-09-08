@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | parchedPremium</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --royal-blue: #003399;
+      --gold: #FFD700;
+      --dark-blue: #001f66;
+      --light-gold: #ffeb99;
+      --bg-gradient: linear-gradient(135deg, #003399, #001f66);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      padding-top: 76px;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--royal-blue) !important;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand i {
+      color: var(--gold);
+      margin-right: 8px;
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      color: var(--dark-blue) !important;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: var(--royal-blue) !important;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--dark-blue);
+      border: none;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    }
+
+    .btn-gold:hover {
+      background: var(--light-gold);
+      color: var(--royal-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--bg-gradient);
+      color: white;
+      padding: 8rem 0 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FFD700' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      position: relative;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .water-drop {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: drop 8s infinite;
+    }
+
+    @keyframes drop {
+      0% {
+        transform: translateY(-100px) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(500px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      color: var(--royal-blue);
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 3rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .contact-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      text-align: center;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .contact-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      position: relative;
+    }
+
+    .contact-icon::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 215, 0, 0.2);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+
+    .contact-card h3 {
+      color: var(--royal-blue);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .contact-info {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .contact-detail i {
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-right: 1rem;
+      width: 20px;
+    }
+
+    .contact-link {
+      color: var(--royal-blue);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--dark-blue);
+      text-decoration: underline;
+    }
+
+    /* Contact Form */
+    .form-control, .form-select {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      border: 2px solid #e9ecef;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: var(--royal-blue);
+      box-shadow: 0 0 0 0.25rem rgba(0, 51, 153, 0.25);
+    }
+
+    /* Map Section */
+    .map-section {
+      padding: 5rem 0;
+      background: #f8f9fa;
+    }
+
+    .location-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .location-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+
+    .location-card h4 {
+      color: var(--royal-blue);
+      margin-bottom: 1rem;
+    }
+
+    .map-placeholder {
+      height: 250px;
+      background: #e9ecef;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .map-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      padding: 5rem 0;
+    }
+
+    .marquee-container {
+      overflow: hidden;
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .marquee {
+      display: flex;
+      animation: marquee 30s linear infinite;
+    }
+
+    .marquee-item {
+      flex: 0 0 auto;
+      width: 300px;
+      margin: 0 1rem;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .marquee-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .marquee-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Large Water Droplets */
+    .large-droplet {
+      position: absolute;
+      background: rgba(0, 51, 153, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 5rem 0;
+      background: #f8f9fa;
+    }
+
+    .accordion-button {
+      font-weight: 600;
+      color: var(--royal-blue);
+    }
+
+    .accordion-button:not(.collapsed) {
+      background: rgba(0, 51, 153, 0.1);
+      color: var(--royal-blue);
+    }
+
+    .accordion-button:focus {
+      border-color: var(--royal-blue);
+      box-shadow: 0 0 0 0.25rem rgba(0, 51, 153, 0.25);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-blue);
+      color: white;
+      padding: 3rem 0 2rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: var(--bg-gradient);
+    }
+
+    footer h5 {
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+      padding-left: 5px;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--gold);
+      color: var(--dark-blue);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title::after {
+        width: 40px;
+      }
+
+      .contact-card {
+        padding: 1.5rem;
+      }
+
+      .marquee-item {
+        width: 250px;
+      }
+    }
+
+    /* Animation for elements */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--royal-blue);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--dark-blue);
+    }
+
+    /* Enhanced Form Styles */
+    .form-alert {
+      display: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    .form-alert.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .form-alert.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <i class="fas fa-tint"></i>parchedPremium
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="btn btn-gold ms-2" href="#contact-form">Order Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" data-aos="fade-down">
+  <!-- Animated water drops -->
+  <div class="water-drop" style="width: 30px; height: 30px; left: 10%; animation-delay: 0s;"></div>
+  <div class="water-drop" style="width: 25px; height: 25px; left: 20%; animation-delay: 2s;"></div>
+  <div class="water-drop" style="width: 35px; height: 35px; left: 30%; animation-delay: 4s;"></div>
+  <div class="water-drop" style="width: 20px; height: 20px; left: 40%; animation-delay: 1s;"></div>
+  <div class="water-drop" style="width: 28px; height: 28px; left: 50%; animation-delay: 3s;"></div>
+  <div class="water-drop" style="width: 22px; height: 22px; left: 60%; animation-delay: 5s;"></div>
+  <div class="water-drop" style="width: 32px; height: 32px; left: 70%; animation-delay: 2.5s;"></div>
+  <div class="water-drop" style="width: 26px; height: 26px; left: 80%; animation-delay: 1.5s;"></div>
+  <div class="water-drop" style="width: 24px; height: 24px; left: 90%; animation-delay: 3.5s;"></div>
+  
+  <!-- Large water droplets -->
+  <div class="large-droplet" style="width: 120px; height: 120px; top: 20%; left: 5%; animation-delay: 0s;"></div>
+  <div class="large-droplet" style="width: 150px; height: 150px; bottom: 20%; right: 5%; animation-delay: 2s;"></div>
+  <div class="large-droplet" style="width: 100px; height: 100px; top: 40%; right: 15%; animation-delay: 4s;"></div>
+  
+  <div class="container position-relative">
+    <h1>Contact <span>Us</span></h1>
+    <p class="lead">Get in touch with parchedPremium - We're here to answer all your questions</p>
+  </div>
+</header>
+
+<!-- Contact Methods Section -->
+<section class="contact-section">
+  <div class="container">
+    <h2 class="text-center section-title" data-aos="fade-up">Get In Touch</h2>
+    
+    <div class="row">
+      <!-- Phone Contact -->
+      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <h3>Call Us</h3>
+          <p>Speak directly with our customer service team</p>
+          
+          <div class="contact-info">
+            <div class="contact-detail">
+              <i class="fas fa-phone"></i>
+              <a href="tel:+254743321379" class="contact-link">+254 743 321 379</a>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-clock"></i>
+              <span>Mon-Sat: 8:00 AM - 8:00 PM</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-info-circle"></i>
+              <span>Sun: 9:00 AM - 6:00 PM</span>
+            </div>
+          </div>
+          
+          <a href="tel:+254743321379" class="btn btn-gold">Call Now</a>
+        </div>
+      </div>
+      
+      <!-- Email Contact -->
+      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>Email Us</h3>
+          <p>Send us an email and we'll respond within 24 hours</p>
+          
+          <div class="contact-info">
+            <div class="contact-detail">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:parchedpremium@gmail.co.ke" class="contact-link">parchedpremium@gmail.co.ke</a>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-info-circle"></i>
+              <span>For general inquiries</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-info-circle"></i>
+              <span>For orders: orders@parchedpremium.co.ke</span>
+            </div>
+          </div>
+          
+          <a href="mailto:parchedpremium@gmail.co.ke" class="btn btn-gold">Send Email</a>
+        </div>
+      </div>
+      
+      <!-- WhatsApp Contact -->
+      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>Message us on WhatsApp for quick responses</p>
+          
+          <div class="contact-info">
+            <div class="contact-detail">
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/254743321379" class="contact-link">+254 743 321 379</a>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-clock"></i>
+              <span>24/7 Availability</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-info-circle"></i>
+              <span>Quick responses guaranteed</span>
+            </div>
+          </div>
+          
+          <a href="https://wa.me/254743321379" class="btn btn-gold">Message Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="py-5 bg-light" id="contact-form">
+  <div class="container">
+    <h2 class="text-center section-title mb-5" data-aos="fade-up">Send Us a Message</h2>
+    
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+        <div class="contact-card">
+          <form id="contactForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" placeholder="Your Phone Number">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <select class="form-select" id="subject">
+                  <option value="Select Subject">Select Subject</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Order Placement">Order Placement</option>
+                  <option value="Delivery Question">Delivery Question</option>
+                  <option value="Complaint">Complaint</option>
+                  <option value="Feedback">Feedback</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-gold w-100" id="submitBtn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Locations Section -->
+<section class="map-section">
+  <div class="container">
+    <h2 class="text-center section-title mb-5" data-aos="fade-up">Our Locations</h2>
+    
+    <div class="row">
+      <!-- Nairobi Location -->
+      <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="location-card">
+          <h4><i class="fas fa-map-marker-alt me-2"></i> Nairobi Station</h4>
+          <div class="map-placeholder">
+            <img src="https://placehold.co/600x400/003399/FFFFFF/png?text=Nairobi+Location" alt="Nairobi Location">
+          </div>
+          <div class="contact-info">
+            <div class="contact-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Maji Avenue, Westlands, Nairobi</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-phone"></i>
+              <span>+254 743 321 379</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-clock"></i>
+              <span>Mon-Sat: 8:00 AM - 8:00 PM</span>
+            </div>
+          </div>
+          <a href="https://goo.gl/maps/example" target="_blank" class="btn btn-gold w-100">Get Directions</a>
+        </div>
+      </div>
+      
+      <!-- Mombasa Location -->
+      <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="location-card">
+          <h4><i class="fas fa-map-marker-alt me-2"></i> Mombasa Station</h4>
+          <div class="map-placeholder">
+            <img src="https://placehold.co/600x400/003399/FFFFFF/png?text=Mombasa+Location" alt="Mombasa Location">
+          </div>
+          <div class="contact-info">
+            <div class="contact-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Ocean Road, Nyali, Mombasa</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-phone"></i>
+              <span>+254 743 321 379</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-clock"></i>
+              <span>Mon-Sat: 8:00 AM - 8:00 PM</span>
+            </div>
+          </div>
+          <a href="https://goo.gl/maps/example" target="_blank" class="btn btn-gold w-100">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery-section">
+  <div class="container">
+    <h2 class="text-center section-title mb-5" data-aos="fade-up">Our Facilities</h2>
+    
+    <div class="marquee-container">
+      <div class="marquee">
+        <div class="marquee-item">
+          <img src="https://placehold.co/300x200/003399/FFFFFF/png?text=Water+Station+1" alt="Water Station">
+        </div>
+        <div class="marquee-item">
+          <img src="https://placehold.co/300x200/003399/FFFFFF/png?text=Water+Station+2" alt="Water Station">
+        </div>
+        <div class="marquee-item">
+          <img src="https://placehold.co/300x200/003399/FFFFFF/png?text=Delivery+Van" alt="Delivery Van">
+        </div>
+        <div class="marquee-item">
+          <img src="https://placehold.co/300x200/003399/FFFFFF/png?text=Water+Bottles" alt="Water Bottles">
+        </div>
+        <div class="marquee-item">
+          <img src="https://placehold.co/300x200/003399/FFFFFF/png?text=Customer+Service" alt="Customer Service">
+        </div>
+        <div class="marquee-item">
+          <img src="https://placehold.co/300x200/003399/FFFFFF/png?text=Purification+Plant" alt="Purification Plant">
+        </div>
+        <div class="marquee-item">
+          <img src="https://placehold.co/300x200/003399/FFFFFF/png?text=Office+Space" alt="Office Space">
+        </div>
+        <div class="marquee-item">
+          <img src="https://placehold.co/300x200/003399/FFFFFF/png?text=Team+Photo" alt="Team Photo">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+  <div class="container">
+    <h2 class="text-center section-title mb-5" data-aos="fade-up">Frequently Asked Questions</h2>
+    
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                What are your delivery hours?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                We deliver from 8:00 AM to 8:00 PM Monday through Saturday, and from 9:00 AM to 6:00 PM on Sundays. Emergency deliveries may be arranged outside these hours with an additional fee.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                How quickly can I get water delivered?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                For standard orders in Nairobi and Mombasa, we deliver within 4-6 hours. For emergency deliveries, we can often deliver within 2 hours (additional fees apply). Outside these cities, delivery times may vary.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Do you offer bulk discounts?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes, we offer volume discounts for orders above 20 units. Please contact our sales team at +254 743 321 379 or parchedpremium@gmail.co.ke for customized quotes for large orders.
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    Can I visit your stations to purchase directly?
+                  </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Absolutely! Our stations in Nairobi and Mombasa are open to the public. You can visit us during business hours (8:00 AM - 8:00 PM Mon-Sat, 9:00 AM - 6:00 PM Sun) to make purchases or inquiries.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                    What payment methods do you accept?
+                  </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    We accept cash on delivery, M-Pesa, bank transfers, and credit/debit cards. For corporate accounts, we offer monthly billing options.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="mb-4" data-aos="fade-up">Ready to Place an Order?</h2>
+        <p class="lead mb-5" data-aos="fade-up" data-aos-delay="100">Contact us now to experience the parchedPremium difference</p>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <a href="tel:+254743321379" class="btn btn-gold btn-lg me-3">Call Now</a>
+          <a href="https://wa.me/254743321379" class="btn btn-outline-primary btn-lg">WhatsApp Us</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4">
+            <h5>parchedPremium</h5>
+            <p>Providing premium quality water with exceptional service since 2010. Your hydration is our priority.</p>
+            <div class="mt-4">
+              <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="index.html">Home</a></li>
+              <li class="mb-2"><a href="services.html">Services</a></li>
+              <li class="mb-2"><a href="about.html">About Us</a></li>
+              <li class="mb-2"><a href="testimonials.html">Testimonials</a></li>
+              <li class="mb-2"><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Our Services</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="services.html#bottled">Bottled Water</a></li>
+              <li class="mb-2"><a href="services.html#delivery">Home Delivery</a></li>
+              <li class="mb-2"><a href="services.html#office">Office Solutions</a></li>
+              <li class="mb-2"><a href="services.html#events">Event Services</a></li>
+              <li class="mb-2"><a href="services.html#subscription">Subscription Plans</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 mb-4">
+            <h5>Contact Info</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Nairobi: 123 Water Avenue, Westlands</li>
+              <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Mombasa: 456 Ocean Road, Nyali</li>
+              <li class="mb-2"><i class="fas fa-phone me-2"></i> +254 743 321 379</li>
+              <li class="mb-2"><i class="fas fa-envelope me-2"></i> parchedpremium@gmail.co.ke</li>
+              <li class="mb-2"><i class="fas fa-clock me-2"></i> Mon-Sat: 8AM - 8PM, Sun: 9AM - 6PM</li>
+            </ul>
+          </div>
+        </div>
+        <hr class="mt-4 mb-4">
+        <div class="text-center">
+          <p>&copy; 2025 parchedPremium. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- JS Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+      });
+    
+      // Create water drops dynamically
+      function createWaterDrops() {
+        const hero = document.querySelector('.hero');
+        for (let i = 0; i < 15; i++) {
+          const drop = document.createElement('div');
+          drop.classList.add('water-drop');
+          drop.style.width = `${Math.random() * 15 + 5}px`;
+          drop.style.height = drop.style.width;
+          drop.style.left = `${Math.random() * 100}%`;
+          drop.style.animationDelay = `${Math.random() * 8}s`;
+          hero.appendChild(drop);
+        }
+      }
+    
+      // Enhanced Contact Page Functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        // Check if user came from order page
+        const urlParams = new URLSearchParams(window.location.search);
+        const action = urlParams.get('action');
+        
+        if (action === 'order') {
+          // Pre-fill the form with order information
+          const selectedService = localStorage.getItem('selectedService');
+          const orderDetails = JSON.parse(localStorage.getItem('orderDetails') || '{}');
+          
+          const subjectSelect = document.getElementById('subject');
+          if (subjectSelect) {
+            subjectSelect.value = 'Order Placement';
+          }
+          
+          const messageTextarea = document.getElementById('message');
+          if (messageTextarea) {
+            let message = 'I would like to place an order for: ';
+            
+            if (selectedService) {
+              message += selectedService;
+            } else if (orderDetails.waterType) {
+              message += `${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
+              if (orderDetails.calculatedPrice) {
+                message += ` (Approx. ${orderDetails.calculatedPrice})`;
+              }
+            }
+            
+            messageTextarea.value = message;
+          }
+          
+          // Scroll to form
+          document.getElementById('contact-form').scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+          contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Validate form
+            if (!name || !email || !message) {
+              alert('Please fill in all required fields');
+              return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+              alert('Please enter a valid email address');
+              return;
+            }
+            
+            // Phone validation (basic)
+            if (phone && !/^[\d\s\-\+\(\)]+$/.test(phone)) {
+              alert('Please enter a valid phone number');
+              return;
+            }
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Simulate form submission
+            setTimeout(() => {
+              // Show success message
+              alert(`Thank you, ${name}! Your ${subject.toLowerCase()} has been received. We will contact you at ${email} or ${phone} soon.`);
+              
+              // Reset form
+              contactForm.reset();
+              
+              // Clear stored order data
+              localStorage.removeItem('selectedService');
+              localStorage.removeItem('orderDetails');
+              
+              // Reset button
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
+            }, 2000);
+          });
+        }
+        
+        // WhatsApp order functionality
+        const whatsappButtons = document.querySelectorAll('a[href*="wa.me"]');
+        whatsappButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get potential order details
+            const selectedService = localStorage.getItem('selectedService');
+            const orderDetails = JSON.parse(localStorage.getItem('orderDetails') || '{}');
+            
+            // Create WhatsApp message
+            let message = "Hello parchedPremium! I'm interested in ";
+            
+            if (selectedService) {
+              message += selectedService;
+            } else if (orderDetails.waterType) {
+              message += `ordering ${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
+            } else {
+              message += "your water services";
+            }
+            
+            message += ". Please provide more information.";
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/254743321379?text=${encodedMessage}`, '_blank');
+          });
+        });
+        
+        // Email order functionality
+        const emailButtons = document.querySelectorAll('a[href^="mailto"]');
+        emailButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get potential order details
+            const selectedService = localStorage.getItem('selectedService');
+            const orderDetails = JSON.parse(localStorage.getItem('orderDetails') || '{}');
+            
+            // Create email subject and body
+            let subject = "Inquiry about parchedPremium Services";
+            let body = "Hello parchedPremium Team,\n\nI'm interested in ";
+            
+            if (selectedService) {
+              subject = `Order Inquiry: ${selectedService}`;
+              body += selectedService;
+            } else if (orderDetails.waterType) {
+              subject = `Order Inquiry: ${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
+              body += `ordering ${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
+            } else {
+              body += "your water services";
+            }
+            
+            body += ".\n\nPlease send me more information about pricing and delivery options.\n\nThank you.";
+            
+            // Open email client with pre-filled content
+            window.location.href = `mailto:parchedpremium@gmail.co.ke?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          });
+        });
+    
+        // Initialize when page loads
+        createWaterDrops();
+      });
+    </script>
+    </body>
+    </html>

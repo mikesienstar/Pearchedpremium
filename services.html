@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | parched Premium</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --royal-blue: #003399;
+      --gold: #FFD700;
+      --dark-blue: #001f66;
+      --light-gold: #ffeb99;
+      --bg-gradient: linear-gradient(135deg, #003399, #001f66);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      padding-top: 76px;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--royal-blue) !important;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand i {
+      color: var(--gold);
+      margin-right: 8px;
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      color: var(--dark-blue) !important;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: var(--royal-blue) !important;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--dark-blue);
+      border: none;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    }
+
+    .btn-gold:hover {
+      background: var(--light-gold);
+      color: var(--royal-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--bg-gradient);
+      color: white;
+      padding: 8rem 0 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FFD700' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      position: relative;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .water-drop {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: drop 8s infinite;
+    }
+
+    @keyframes drop {
+      0% {
+        transform: translateY(-100px) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(500px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      color: var(--royal-blue);
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 3rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Filter Buttons */
+    .filter-buttons {
+      margin-bottom: 3rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 2px solid var(--royal-blue);
+      color: var(--royal-blue);
+      padding: 0.7rem 1.8rem;
+      border-radius: 30px;
+      margin: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--royal-blue);
+      color: white;
+    }
+
+    /* Service Cards */
+    .service-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      position: relative;
+    }
+
+    .service-icon::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 215, 0, 0.2);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: -1;
+    }
+
+    .service-card h3 {
+      color: var(--royal-blue);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .price-list {
+      margin: 1.5rem 0;
+    }
+
+    .price-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      border-bottom: 1px dashed #eee;
+    }
+
+    .price-item:last-child {
+      border-bottom: none;
+    }
+
+    .price-tag {
+      color: var(--royal-blue);
+      font-weight: 600;
+    }
+
+    .ksh {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Delivery Section */
+    .delivery-section {
+      background: #f8f9fa;
+      padding: 5rem 0;
+    }
+
+    .delivery-method {
+      text-align: center;
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .delivery-method:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+
+    .delivery-icon {
+      font-size: 3rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Calculator Section */
+    .calculator-section {
+      padding: 5rem 0;
+      background: var(--bg-gradient);
+      color: white;
+    }
+
+    .calculator-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2.5rem;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .calculator-card h3 {
+      color: var(--royal-blue);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .form-label {
+      color: var(--royal-blue);
+      font-weight: 500;
+    }
+
+    .form-control, .form-select {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      border: 2px solid #e9ecef;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: var(--royal-blue);
+      box-shadow: 0 0 0 0.25rem rgba(0, 51, 153, 0.25);
+    }
+
+    .calculator-result {
+      background: rgba(0, 51, 153, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .result-amount {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--royal-blue);
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      padding: 5rem 0;
+    }
+
+    .gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 5rem 0;
+      background: #f8f9fa;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-blue);
+      color: white;
+      padding: 3rem 0 2rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: var(--bg-gradient);
+    }
+
+    footer h5 {
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+      padding-left: 5px;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--gold);
+      color: var(--dark-blue);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title::after {
+        width: 40px;
+      }
+
+      .service-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Animation for elements */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--royal-blue);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--dark-blue);
+    }
+
+    /* Enhanced Form Styles */
+    .form-alert {
+      display: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    .form-alert.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .form-alert.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <i class="fas fa-tint"></i>parched Premium
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="btn btn-gold ms-2" href="#calculator">Order Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" data-aos="fade-down">
+  <!-- Animated water drops -->
+  <div class="water-drop" style="width: 20px; height: 20px; left: 10%; animation-delay: 0s;"></div>
+  <div class="water-drop" style="width: 15px; height: 15px; left: 20%; animation-delay: 2s;"></div>
+  <div class="water-drop" style="width: 25px; height: 25px; left: 30%; animation-delay: 4s;"></div>
+  <div class="water-drop" style="width: 10px; height: 10px; left: 40%; animation-delay: 1s;"></div>
+  <div class="water-drop" style="width: 18px; height: 18px; left: 50%; animation-delay: 3s;"></div>
+  <div class="water-drop" style="width: 12px; height: 12px; left: 60%; animation-delay: 5s;"></div>
+  <div class="water-drop" style="width: 22px; height: 22px; left: 70%; animation-delay: 2.5s;"></div>
+  <div class="water-drop" style="width: 16px; height: 16px; left: 80%; animation-delay: 1.5s;"></div>
+  <div class="water-drop" style="width: 14px; height: 14px; left: 90%; animation-delay: 3.5s;"></div>
+  
+  <div class="container position-relative">
+    <h1>Our <span>Services</span></h1>
+    <p class="lead">Premium water solutions for homes, offices, and events across Kenya</p>
+  </div>
+</header>
+
+<!-- Services Section -->
+<section class="services-section">
+  <div class="container">
+    <h2 class="text-center section-title" data-aos="fade-up">Water Services & Pricing</h2>
+    
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All Services</button>
+      <button class="filter-btn" data-filter="bottled">Bottled Water</button>
+      <button class="filter-btn" data-filter="delivery">Home Delivery</button>
+      <button class="filter-btn" data-filter="office">Office Solutions</button>
+      <button class="filter-btn" data-filter="events">Event Services</button>
+    </div>
+    
+    <div class="row">
+      <!-- Bottled Water Service -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100" data-category="bottled">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-wine-bottle"></i>
+          </div>
+          <h3>Bottled Water</h3>
+          <p>Our premium bottled water is purified through a 7-step process and packaged in eco-friendly bottles. Perfect for individual consumption and on-the-go hydration.</p>
+          
+          <div class="price-list">
+            <div class="price-item">
+              <span>500ml Bottle</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 50</span>
+            </div>
+            <div class="price-item">
+              <span>1L Bottle</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 80</span>
+            </div>
+            <div class="price-item">
+              <span>2L Bottle</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 150</span>
+            </div>
+            <div class="price-item">
+              <span>5L Bottle</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 300</span>
+            </div>
+            <div class="price-item">
+              <span>10L Bottle</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 550</span>
+            </div>
+            <div class="price-item">
+              <span>20L Bottle</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 1,000</span>
+            </div>
+          </div>
+          
+          <a href="#" class="btn btn-gold w-100 order-service-btn">Order Now</a>
+        </div>
+      </div>
+      
+      <!-- Home Delivery Service -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200" data-category="delivery">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3>Home Delivery</h3>
+          <p>Get fresh water delivered straight to your doorstep. Our reliable delivery service ensures you never run out of clean drinking water.</p>
+          
+          <div class="price-list">
+            <div class="price-item">
+              <span>Delivery Fee (Within Nairobi)</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 200</span>
+            </div>
+            <div class="price-item">
+              <span>Delivery Fee (Outside Nairobi)</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 500+</span>
+            </div>
+            <div class="price-item">
+              <span>Subscription Discount</span>
+              <span class="price-tag">15% OFF</span>
+            </div>
+            <div class="price-item">
+              <span>Emergency Delivery</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 400</span>
+            </div>
+          </div>
+          
+          <div class="mt-3">
+            <p class="small"><i class="fas fa-info-circle me-2"></i> Free delivery for orders above <span class="ksh">Ksh</span> 2,000 within Nairobi</p>
+          </div>
+          
+          <a href="#" class="btn btn-gold w-100 order-service-btn">Schedule Delivery</a>
+        </div>
+      </div>
+      
+      <!-- Office Solutions -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="300" data-category="office">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3>Office Water Solutions</h3>
+          <p>Keep your workplace hydrated with our comprehensive office water solutions. We provide water dispensers, coolers, and regular supply services.</p>
+          
+          <div class="price-list">
+            <div class="price-item">
+              <span>Water Dispenser Rental (Monthly)</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 1,500</span>
+            </div>
+            <div class="price-item">
+              <span>Water Cooler Purchase</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 8,000+</span>
+            </div>
+            <div class="price-item">
+              <span>Weekly Office Supply (20L x 4)</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 3,800</span>
+            </div>
+            <div class="price-item">
+              <span>Monthly Office Supply (20L x 16)</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 14,400</span>
+            </div>
+          </div>
+          
+          <a href="#" class="btn btn-gold w-100 order-service-btn">Request Quote</a>
+        </div>
+      </div>
+      
+      <!-- Event Services -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="400" data-category="events">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-glass-cheers"></i>
+          </div>
+          <h3>Event Hydration Services</h3>
+          <p>Make your event memorable with our premium hydration solutions. We provide water stations, bottled water, and customized services for all types of events.</p>
+          
+          <div class="price-list">
+            <div class="price-item">
+              <span>Wedding Events (100+ guests)</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 15,000+</span>
+            </div>
+            <div class="price-item">
+              <span>Corporate Events (50-100 guests)</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 8,000+</span>
+            </div>
+            <div class="price-item">
+              <span>Small Gatherings (20-50 guests)</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 4,000+</span>
+            </div>
+            <div class="price-item">
+              <span>Custom Branded Bottles (Min. 100)</span>
+              <span class="price-tag"><span class="ksh">Ksh</span> 120 each</span>
+            </div>
+          </div>
+          
+          <a href="#" class="btn btn-gold w-100 order-service-btn">Plan My Event</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Delivery Methods Section -->
+<section class="delivery-section">
+  <div class="container">
+    <h2 class="text-center section-title" data-aos="fade-up">Our Delivery Methods</h2>
+    <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">We use various transportation methods to ensure timely delivery across different regions</p>
+    
+    <div class="row">
+      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="delivery-method">
+          <div class="delivery-icon">
+            <i class="fas fa-motorcycle"></i>
+          </div>
+          <h4>Motorcycle Delivery</h4>
+          <p>Fast and efficient delivery for small orders in urban areas. Perfect for quick deliveries in traffic-prone regions.</p>
+          <p class="mt-3"><strong>Delivery Areas:</strong> Urban centers, narrow streets</p>
+          <p><strong>Capacity:</strong> Up to 100L per delivery</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="delivery-method">
+          <div class="delivery-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h4>Van Delivery</h4>
+          <p>Medium-sized deliveries for homes and offices. Our most popular delivery method for regular customers.</p>
+          <p class="mt-3"><strong>Delivery Areas:</strong> Residential areas, business districts</p>
+          <p><strong>Capacity:</strong> Up to 1000L per delivery</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="delivery-method">
+          <div class="delivery-icon">
+            <i class="fas fa-truck-loading"></i>
+          </div>
+          <h4>Truck Delivery</h4>
+          <p>Large-scale deliveries for events, offices, and bulk orders. Equipped with handling equipment for easy unloading.</p>
+          <p class="mt-3"><strong>Delivery Areas:</strong> All regions across Kenya</p>
+          <p><strong>Capacity:</strong> Up to 5000L per delivery</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Price Calculator Section -->
+<section class="calculator-section" id="calculator">
+  <div class="container">
+    <h2 class="text-center mb-5 text-white" data-aos="fade-up">Water Cost Calculator</h2>
+    
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+        <div class="calculator-card">
+          <h3>Calculate Your Order</h3>
+          
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="waterType" class="form-label">Water Type</label>
+              <select class="form-select" id="waterType">
+                <option value="500ml">500ml Bottled Water</option>
+                <option value="1l">1L Bottled Water</option>
+                <option value="2l">2L Bottled Water</option>
+                <option value="5l">5L Bottled Water</option>
+                <option value="10l">10L Bottled Water</option>
+                <option value="20l">20L Bottled Water</option>
+              </select>
+            </div>
+            
+            <div class="col-md-6 mb-3">
+              <label for="quantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="quantity" min="1" value="1">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="deliveryType" class="form-label">Delivery Method</label>
+              <select class="form-select" id="deliveryType">
+                <option value="pickup">Pickup (Free)</option>
+                <option value="nairobi">Nairobi Delivery (Ksh 200)</option>
+                <option value="outside">Outside Nairobi (Ksh 500+)</option>
+              </select>
+            </div>
+            
+            <div class="col-md-6 mb-3">
+              <label for="subscription" class="form-label">Subscription</label>
+              <select class="form-select" id="subscription">
+                <option value="none">One-time Purchase</option>
+                <option value="weekly">Weekly Subscription (10% off)</option>
+                <option value="monthly">Monthly Subscription (15% off)</option>
+              </select>
+            </div>
+          </div>
+          
+          <button class="btn btn-gold w-100" id="calculate-btn">Calculate Total</button>
+          
+          <div class="calculator-result mt-4">
+            <p class="mb-1">Estimated Total Cost:</p>
+            <div class="result-amount" id="totalCost">Ksh 0.00</div>
+            <p class="small text-muted mt-2" id="breakdown">Select options to see price breakdown</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery-section">
+  <div class="container">
+    <h2 class="text-center section-title mb-5" data-aos="fade-up">Our Service in Action</h2>
+    
+    <div class="row">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="gallery-item">
+          <img src="https://placehold.co/400x300/003399/FFFFFF/png?text=Home+Delivery" alt="Home Delivery Service">
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="gallery-item">
+          <img src="https://placehold.co/400x300/003399/FFFFFF/png?text=Office+Supply" alt="Office Water Supply">
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="gallery-item">
+          <img src="https://placehold.co/400x300/003399/FFFFFF/png?text=Event+Hydration" alt="Event Hydration">
+        </div>
+      </div>
+      
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="gallery-item">
+              <img src="https://placehold.co/400x300/003399/FFFFFF/png?text=Water+Bottles" alt="Water Bottles">
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="gallery-item">
+              <img src="https://placehold.co/400x300/003399/FFFFFF/png?text=Customer+Service" alt="Customer Service">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="mb-4" data-aos="fade-up">Ready to Get Started?</h2>
+        <p class="lead mb-5" data-aos="fade-up" data-aos-delay="100">Join thousands of satisfied customers across Kenya who trust parched Premium for their hydration needs</p>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <a href="contact.html" class="btn btn-gold btn-lg me-3">Place Your Order</a>
+          <a href="contact.html" class="btn btn-outline-primary btn-lg">Contact Us</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4">
+            <h5>parched Premium</h5>
+            <p>Providing premium quality water with exceptional service since 2010. Your hydration is our priority.</p>
+            <div class="mt-4">
+              <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="index.html">Home</a></li>
+              <li class="mb-2"><a href="services.html">Services</a></li>
+              <li class="mb-2"><a href="about.html">About Us</a></li>
+              <li class="mb-2"><a href="testimonials.html">Testimonials</a></li>
+              <li class="mb-2"><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Our Services</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="services.html#bottled">Bottled Water</a></li>
+              <li class="mb-2"><a href="services.html#delivery">Home Delivery</a></li>
+              <li class="mb-2"><a href="services.html#office">Office Solutions</a></li>
+              <li class="mb-2"><a href="services.html#events">Event Services</a></li>
+              <li class="mb-2"><a href="services.html#subscription">Subscription Plans</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 mb-4">
+            <h5>Contact Info</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Water Street, Nairobi, Kenya</li>
+              <li class="mb-2"><i class="fas fa-phone me-2"></i> +254 743 321 379</li>
+              <li class="mb-2"><i class="fas fa-envelope me-2"></i> parchedpremium@gmail.co.ke</li>
+              <li class="mb-2"><i class="fas fa-clock me-2"></i> Mon-Sat: 8AM - 6PM</li>
+            </ul>
+          </div>
+        </div>
+        <hr class="mt-4 mb-4">
+        <div class="text-center">
+          <p>&copy; 2025 parched Premium. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- JS Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+      });
+    
+      // Create water drops dynamically
+      function createWaterDrops() {
+        const hero = document.querySelector('.hero');
+        for (let i = 0; i < 15; i++) {
+          const drop = document.createElement('div');
+          drop.classList.add('water-drop');
+          drop.style.width = `${Math.random() * 15 + 5}px`;
+          drop.style.height = drop.style.width;
+          drop.style.left = `${Math.random() * 100}%`;
+          drop.style.animationDelay = `${Math.random() * 8}s`;
+          hero.appendChild(drop);
+        }
+      }
+    
+      // Enhanced Price Calculator with Order Functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize calculator with default values
+        calculatePrice();
+        
+        // Service filtering
+        function setupFiltering() {
+          const filterButtons = document.querySelectorAll('.filter-btn');
+          const services = document.querySelectorAll('[data-category]');
+          
+          filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+              // Remove active class from all buttons
+              filterButtons.forEach(btn => btn.classList.remove('active'));
+              
+              // Add active class to clicked button
+              button.classList.add('active');
+              
+              // Get filter value
+              const filterValue = button.getAttribute('data-filter');
+              
+              // Show/hide services based on filter
+              services.forEach(service => {
+                if (filterValue === 'all' || service.getAttribute('data-category') === filterValue) {
+                  service.style.display = 'block';
+                } else {
+                  service.style.display = 'none';
+                }
+              });
+            });
+          });
+        }
+        
+        // Enhanced price calculator with order functionality
+        function calculatePrice() {
+          // Get selected values
+          const waterType = document.getElementById('waterType').value;
+          const quantity = parseInt(document.getElementById('quantity').value) || 1;
+          const deliveryType = document.getElementById('deliveryType').value;
+          const subscription = document.getElementById('subscription').value;
+          
+          // Price mapping
+          const prices = {
+            '500ml': 50,
+            '1l': 80,
+            '2l': 150,
+            '5l': 300,
+            '10l': 550,
+            '20l': 1000
+          };
+          
+          // Delivery costs
+          const deliveryCosts = {
+            'pickup': 0,
+            'nairobi': 200,
+            'outside': 500
+          };
+          
+          // Subscription discounts
+          const discounts = {
+            'none': 0,
+            'weekly': 0.1,
+            'monthly': 0.15
+          };
+          
+          // Calculate base price
+          const basePrice = prices[waterType] * quantity;
+          
+          // Calculate delivery cost
+          const deliveryCost = deliveryCosts[deliveryType];
+          
+          // Calculate discount
+          const discount = basePrice * discounts[subscription];
+          
+          // Calculate total
+          const total = basePrice + deliveryCost - discount;
+          
+          // Format numbers with commas
+          const formatNumber = (num) => {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          };
+          
+          // Update UI
+          document.getElementById('totalCost').textContent = `Ksh ${formatNumber(total.toFixed(0))}`;
+          
+          // Create breakdown text
+          let breakdownText = `
+            ${quantity} x ${waterType.toUpperCase()} (Ksh ${formatNumber(prices[waterType])} each): Ksh ${formatNumber(basePrice)}<br>
+          `;
+          
+          if (deliveryCost > 0) {
+            breakdownText += `Delivery: Ksh ${formatNumber(deliveryCost)}<br>`;
+          } else {
+            breakdownText += `Delivery: Free (Pickup)<br>`;
+          }
+          
+          if (discount > 0) {
+            breakdownText += `Subscription Discount: -Ksh ${formatNumber(discount.toFixed(0))}<br>`;
+          }
+          
+          breakdownText += `<strong>Total: Ksh ${formatNumber(total.toFixed(0))}</strong>`;
+          
+          document.getElementById('breakdown').innerHTML = breakdownText;
+        }
+        
+        // Order now functionality for service cards
+        const orderButtons = document.querySelectorAll('.order-service-btn');
+        orderButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const card = this.closest('.service-card');
+            const serviceName = card.querySelector('h3').textContent;
+            
+            // Store service selection in localStorage
+            localStorage.setItem('selectedService', serviceName);
+            
+            // Redirect to contact page with order preference
+            window.location.href = 'contact.html?action=order';
+          });
+        });
+        
+        // Initialize when page loads
+        setupFiltering();
+        
+        // Add event listeners to calculator inputs
+        document.getElementById('waterType').addEventListener('change', calculatePrice);
+        document.getElementById('quantity').addEventListener('input', calculatePrice);
+        document.getElementById('deliveryType').addEventListener('change', calculatePrice);
+        document.getElementById('subscription').addEventListener('change', calculatePrice);
+        
+        // Add calculate button event listener
+        document.getElementById('calculate-btn').addEventListener('click', calculatePrice);
+        
+        // Add order button to calculator
+        const calculatorResult = document.querySelector('.calculator-result');
+        const orderBtn = document.createElement('button');
+        orderBtn.textContent = 'Place Order';
+        orderBtn.className = 'btn btn-gold w-100 mt-3';
+        orderBtn.addEventListener('click', function() {
+          const waterType = document.getElementById('waterType').value;
+          const quantity = document.getElementById('quantity').value;
+          const deliveryType = document.getElementById('deliveryType').value;
+          const subscription = document.getElementById('subscription').value;
+          
+          // Store order details
+          localStorage.setItem('orderDetails', JSON.stringify({
+            waterType: waterType,
+            quantity: quantity,
+            deliveryType: deliveryType,
+            subscription: subscription,
+            calculatedPrice: document.getElementById('totalCost').textContent
+          }));
+          
+          // Redirect to contact page
+          window.location.href = 'contact.html?action=order';
+        });
+        
+        calculatorResult.appendChild(orderBtn);
+      });
+    </script>
+    </body>
+    </html>

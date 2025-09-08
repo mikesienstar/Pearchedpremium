@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials | parched Premium</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --royal-blue: #003399;
+      --gold: #FFD700;
+      --dark-blue: #001f66;
+      --light-gold: #ffeb99;
+      --bg-gradient: linear-gradient(135deg, #003399, #001f66);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      padding-top: 76px;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--royal-blue) !important;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand i {
+      color: var(--gold);
+      margin-right: 8px;
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      color: var(--dark-blue) !important;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: var(--royal-blue) !important;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--dark-blue);
+      border: none;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    }
+
+    .btn-gold:hover {
+      background: var(--light-gold);
+      color: var(--royal-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--bg-gradient);
+      color: white;
+      padding: 8rem 0 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FFD700' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      position: relative;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .water-drop {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: drop 8s infinite;
+    }
+
+    @keyframes drop {
+      0% {
+        transform: translateY(-100px) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(500px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* Testimonial Cards */
+    .testimonial-section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      color: var(--royal-blue);
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 3rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      font-size: 8rem;
+      color: rgba(0, 51, 153, 0.05);
+      position: absolute;
+      top: -2rem;
+      left: 1rem;
+      font-family: 'Georgia', serif;
+      line-height: 1;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .testimonial-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      color: #555;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+
+    .author-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+      margin-right: 1rem;
+    }
+
+    .author-info h5 {
+      margin-bottom: 0.3rem;
+      color: var(--royal-blue);
+      font-weight: 600;
+    }
+
+    .author-info p {
+      margin-bottom: 0;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    .rating {
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .testimonial-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .service-type {
+      background: rgba(0, 51, 153, 0.1);
+      color: var(--royal-blue);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Video Testimonials */
+    .video-testimonial {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+
+    .video-thumbnail {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .video-thumbnail img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-blue);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .video-thumbnail:hover .play-btn {
+      background: var(--light-gold);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .video-info {
+      padding: 1.5rem;
+      background: white;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: var(--bg-gradient);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .stat-item {
+      margin-bottom: 2rem;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--gold);
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 5rem 0;
+      background: #f8f9fa;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-blue);
+      color: white;
+      padding: 3rem 0 2rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: var(--bg-gradient);
+    }
+
+    footer h5 {
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+      padding-left: 5px;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--gold);
+      color: var(--dark-blue);
+      transform: translateY(-3px);
+    }
+
+    /* Filter Buttons */
+    .filter-buttons {
+      margin-bottom: 3rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 2px solid var(--royal-blue);
+      color: var(--royal-blue);
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      margin: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--royal-blue);
+      color: white;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title::after {
+        width: 40px;
+      }
+
+      .testimonial-card {
+        padding: 1.5rem;
+      }
+
+      .testimonial-card::before {
+        font-size: 6rem;
+      }
+    }
+
+    /* Animation for elements */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--royal-blue);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--dark-blue);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <i class="fas fa-tint"></i>parched Premium
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="testimonials.html">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="btn btn-gold ms-2" href="contact.html">Order Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" data-aos="fade-down">
+  <!-- Animated water drops -->
+  <div class="water-drop" style="width: 20px; height: 20px; left: 10%; animation-delay: 0s;"></div>
+  <div class="water-drop" style="width: 15px; height: 15px; left: 20%; animation-delay: 2s;"></div>
+  <div class="water-drop" style="width: 25px; height: 25px; left: 30%; animation-delay: 4s;"></div>
+  <div class="water-drop" style="width: 10px; height: 10px; left: 40%; animation-delay: 1s;"></div>
+  <div class="water-drop" style="width: 18px; height: 18px; left: 50%; animation-delay: 3s;"></div>
+  <div class="water-drop" style="width: 12px; height: 12px; left: 60%; animation-delay: 5s;"></div>
+  <div class="water-drop" style="width: 22px; height: 22px; left: 70%; animation-delay: 2.5s;"></div>
+  <div class="water-drop" style="width: 16px; height: 16px; left: 80%; animation-delay: 1.5s;"></div>
+  <div class="water-drop" style="width: 14px; height: 14px; left: 90%; animation-delay: 3.5s;"></div>
+  
+  <div class="container position-relative">
+    <h1>Customer <span>Testimonials</span></h1>
+    <p class="lead">Hear what our satisfied customers have to say about our premium water services</p>
+  </div>
+</header>
+
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-6" data-aos="fade-up">
+        <div class="stat-item">
+          <div class="stat-number" id="happyCustomers">5000</div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-item">
+          <div class="stat-number" id="yearsExperience">12</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-item">
+          <div class="stat-number" id="satisfactionRate">98</div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="stat-item">
+          <div class="stat-number" id="testimonials">247</div>
+          <div class="stat-label">Testimonials</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial Filters -->
+<section class="py-5">
+  <div class="container">
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All Testimonials</button>
+      <button class="filter-btn" data-filter="home">Home Delivery</button>
+      <button class="filter-btn" data-filter="office">Office Supply</button>
+      <button class="filter-btn" data-filter="events">Event Hydration</button>
+      <button class="filter-btn" data-filter="subscription">Subscription</button>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonial-section">
+  <div class="container">
+    <h2 class="text-center section-title" data-aos="fade-up">What Our Customers Say</h2>
+    
+    <div class="row">
+      <!-- Testimonial 1 -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100" data-category="home">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"I've been using parched Premium's home delivery service for over two years now, and I couldn't be happier. The water always arrives on schedule, and the quality is consistently excellent. Their subscription model makes it so convenient - I never have to worry about running out of water. The delivery personnel are always polite and professional. Highly recommend!"</p>
+            <div class="testimonial-author">
+              <img src="https://placehold.co/70x70/003399/FFFFFF/png?text=SJ" alt="Sarah Johnson" class="author-img">
+              <div class="author-info">
+                <h5>Sarah Johnson</h5>
+                <p>Home Customer • 2+ years</p>
+              </div>
+            </div>
+            <div class="testimonial-meta">
+              <span class="service-type">Home Delivery</span>
+              <span><i class="far fa-calendar me-1"></i> March 15, 2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200" data-category="office">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"As an office manager for a 50-person company, keeping our team hydrated is important. parched Premium has been our reliable partner for three years. Their water coolers are modern and well-maintained, and their delivery is always punctual. What I appreciate most is their flexibility - when we had an unexpected team expansion, they quickly adjusted our delivery schedule without any issues."</p>
+            <div class="testimonial-author">
+              <img src="https://placehold.co/70x70/003399/FFFFFF/png?text=MC" alt="Michael Chen" class="author-img">
+              <div class="author-info">
+                <h5>Michael Chen</h5>
+                <p>Office Manager • TechSolutions Inc.</p>
+              </div>
+            </div>
+            <div class="testimonial-meta">
+              <span class="service-type">Office Supply</span>
+              <span><i class="far fa-calendar me-1"></i> January 28, 2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="300" data-category="events">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"We chose parched Premium for our wedding of 200 guests, and they exceeded our expectations. Not only did they provide beautiful water dispensers that matched our wedding theme, but they also set up a dedicated hydration station that was both functional and elegant. Their team arrived on time, handled everything professionally, and even stayed a bit longer to ensure we had everything we needed. Many guests commented on how good the water tasted!"</p>
+            <div class="testimonial-author">
+              <img src="https://placehold.co/70x70/003399/FFFFFF/png?text=LM" alt="Linda & Mark" class="author-img">
+              <div class="author-info">
+                <h5>Linda & Mark Thompson</h5>
+                <p>Wedding Clients</p>
+              </div>
+            </div>
+            <div class="testimonial-meta">
+              <span class="service-type">Event Hydration</span>
+              <span><i class="far fa-calendar me-1"></i> November 5, 2022</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 4 -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="400" data-category="subscription">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="testimonial-text">"I've tried several water delivery services over the years, but parched Premium's subscription model is by far the most convenient and cost-effective. Their app makes it easy to manage my deliveries, and I love that I can pause or modify my subscription with just a few clicks. The water quality is consistently excellent, and their customer service team is responsive and helpful. I've been a happy subscriber for 18 months now!"</p>
+            <div class="testimonial-author">
+              <img src="https://placehold.co/70x70/003399/FFFFFF/png?text=RD" alt="Robert Davis" class="author-img">
+              <div class="author-info">
+                <h5>Robert Davis</h5>
+                <p>Subscription Customer • 18 months</p>
+              </div>
+            </div>
+            <div class="testimonial-meta">
+              <span class="service-type">Subscription</span>
+              <span><i class="far fa-calendar me-1"></i> October 12, 2022</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 5 -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="500" data-category="home">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"As a mother of three, having reliable access to clean drinking water is essential. parched Premium has been our family's water provider for the past year, and I'm consistently impressed with their service. The water tastes fresh and pure, and my kids actually drink more water now because they enjoy the taste. The delivery drivers are always courteous and careful with our packages. It's one less thing I have to worry about!"</p>
+            <div class="testimonial-author">
+              <img src="https://placehold.co/70x70/003399/FFFFFF/png?text=AP" alt="Amanda Peterson" class="author-img">
+              <div class="author-info">
+                <h5>Amanda Peterson</h5>
+                <p>Family Customer • 1 year</p>
+              </div>
+            </div>
+            <div class="testimonial-meta">
+              <span class="service-type">Home Delivery</span>
+              <span><i class="far fa-calendar me-1"></i> September 3, 2022</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 6 -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="600" data-category="office">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"Our law firm has been using parched Premium for our office water needs for over two years. The quality of their water and service is exceptional. What sets them apart is their attention to detail - they remember our preferences and always check if we need any adjustments to our delivery schedule. Their bottled water is perfect for client meetings, and the water coolers in our break rooms are always well-maintained. A premium service worth every penny."</p>
+            <div class="testimonial-author">
+              <img src="https://placehold.co/70x70/003399/FFFFFF/png?text=JW" alt="James Wilson" class="author-img">
+              <div class="author-info">
+                <h5>James Wilson</h5>
+                <p>Senior Partner • Wilson & Associates</p>
+              </div>
+            </div>
+            <div class="testimonial-meta">
+              <span class="service-type">Office Supply</span>
+              <span><i class="far fa-calendar me-1"></i> August 19, 2022</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Video Testimonials Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center section-title mb-5" data-aos="fade-up">Video Testimonials</h2>
+    
+    <div class="row">
+      <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="video-testimonial">
+          <div class="video-thumbnail">
+            <img src="https://placehold.co/600x340/003399/FFFFFF/png?text=Video+Testimonial+1" alt="Video Testimonial">
+            <div class="play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+          </div>
+          <div class="video-info">
+            <h5>Sarah's Experience with Home Delivery</h5>
+            <p class="mb-0">See why Sarah has been a loyal customer for over 2 years</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="video-testimonial">
+          <div class="video-thumbnail">
+            <img src="https://placehold.co/600x340/003399/FFFFFF/png?text=Video+Testimonial+2" alt="Video Testimonial">
+            <div class="play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+          </div>
+          <div class="video-info">
+            <h5>Office Manager Review</h5>
+            <p class="mb-0">How parched Premium keeps our 50-person office hydrated</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="mb-4" data-aos="fade-up">Ready to Experience Premium Water?</h2>
+    <p class="lead mb-5" data-aos="fade-up" data-aos-delay="100">Join thousands of satisfied customers who trust parched Premium for their hydration needs</p>
+    <div data-aos="fade-up" data-aos-delay="200">
+      <a href="contact.html" class="btn btn-gold btn-lg me-3">Get Started</a>
+      <a href="services.html" class="btn btn-outline-primary btn-lg">View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <h5>parched Premium</h5>
+        <p>Providing premium quality water with exceptional service since 2010. Your hydration is our priority.</p>
+        <div class="mt-4">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="index.html">Home</a></li>
+          <li class="mb-2"><a href="services.html">Services</a></li>
+          <li class="mb-2"><a href="about.html">About Us</a></li>
+          <li class="mb-2"><a href="testimonials.html">Testimonials</a></li>
+          <li class="mb-2"><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h5>Our Services</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="services.html#delivery">Home Delivery</a></li>
+          <li class="mb-2"><a href="services.html#office">Office Supply</a></li>
+          <li class="mb-2"><a href="services.html#events">Event Hydration</a></li>
+          <li class="mb-2"><a href="services.html#coolers">Water Coolers</a></li>
+          <li class="mb-2"><a href="services.html#subscription">Subscription Plans</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 mb-4">
+        <h5>Contact Info</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Mombasa Street, Nairobi, Kenya</li>
+          <li class="mb-2"><i class="fas fa-phone me-2"></i> +254 43321379</li>
+          <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@parchedpremium.com</li>
+          <li class="mb-2"><i class="fas fa-clock me-2"></i> Mon-Sat: 8AM - 6PM</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="mt-4 mb-4">
+    <div class="text-center">
+      <p>&copy; 2025 parched Premium. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- JS Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Initialize AOS
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100
+  });
+
+  // Create water drops dynamically
+  function createWaterDrops() {
+    const hero = document.querySelector('.hero');
+    for (let i = 0; i < 15; i++) {
+      const drop = document.createElement('div');
+      drop.classList.add('water-drop');
+      drop.style.width = `${Math.random() * 15 + 5}px`;
+      drop.style.height = drop.style.width;
+      drop.style.left = `${Math.random() * 100}%`;
+      drop.style.animationDelay = `${Math.random() * 8}s`;
+      hero.appendChild(drop);
+    }
+  }
+
+  // Counter animation
+  function startCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 200;
+    
+    counters.forEach(counter => {
+      const target = +counter.innerText;
+      const count = +counter.innerText;
+      const increment = Math.ceil(target / speed);
+      
+      if (count < target) {
+        counter.innerText = Math.min(count + increment, target);
+        setTimeout(() => startCounters(), 1);
+      }
+    });
+  }
+
+  // Testimonial filtering
+  function setupFiltering() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const testimonials = document.querySelectorAll('[data-category]');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        // Get filter value
+        const filterValue = button.getAttribute('data-filter');
+        
+        // Show/hide testimonials based on filter
+        testimonials.forEach(testimonial => {
+          if (filterValue === 'all' || testimonial.getAttribute('data-category') === filterValue) {
+            testimonial.style.display = 'block';
+          } else {
+            testimonial.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // Initialize when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    createWaterDrops();
+    setupFiltering();
+    
+    // Start counters when stats section is in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+  });
+</script>
+</body>
+</html>
