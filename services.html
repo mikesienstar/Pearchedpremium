@@ -1376,11 +1376,117 @@
           }));
           
           // Redirect to contact page
-          window.location.href = `mailto:parchedcompanyltd@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          //<!-- Add this right after your existing calculator JavaScript code -->
+              // Add this right after your existing calculator JavaScript code
+
+              // Get DOM elements for email functionality
+              const placeOrderBtn = document.getElementById('placeOrderBtn');
+              const emailAlert = document.createElement('div');
+              const alertMessage = document.createElement('span');
+
+              // Create and add alert element to the calculator result section
+              emailAlert.className = 'alert-box alert-success mt-3';
+              emailAlert.style.display = 'none';
+              emailAlert.innerHTML = '<i class="fas fa-check-circle me-2"></i><span id="alertMessage"></span>';
+              document.querySelector('.calculator-result').appendChild(emailAlert);
+
+              // Function to get the full water type name from value
+              function getFullWaterTypeName(value) {
+                const waterTypes = {
+                  '500ml': '500ml Bottled Water',
+                  'cp': '500ml Carton Pack',
+                  'bc': '500ml Branded Carton Pack',
+                  'cpc': '500ml Custom Premium Carton Pack',
+                  '1l': '1L Bottled Water',
+                  '5l': '5L Bottled Water',
+                  '10l': '10L Bottled Water',
+                  '20l': '20L Bottled Water'
+                };
+                return waterTypes[value] || value;
+              }
+
+              // Send order email function
+              function sendOrderEmail(orderDetails) {
+                const waterTypeElement = document.getElementById('waterType');
+                const selectedOption = waterTypeElement.options[waterTypeElement.selectedIndex];
+                const waterTypeName = selectedOption.text;
+                
+                const deliveryTypeElement = document.getElementById('deliveryType');
+                const deliveryTypeName = deliveryTypeElement.options[deliveryTypeElement.selectedIndex].text;
+                
+                const subscriptionElement = document.getElementById('subscription');
+                const subscriptionName = subscriptionElement.options[subscriptionElement.selectedIndex].text;
+                
+                const subject = `Order Inquiry: ${orderDetails.quantity} x ${waterTypeName}`;
+                
+                let body = `Hello Perched Premium Team,%0D%0A%0D%0A`;
+                body += `I would like to place an order for water:%0D%0A%0D%0A`;
+                body += `Water Type: ${waterTypeName}%0D%0A`;
+                body += `Quantity: ${orderDetails.quantity}%0D%0A`;
+                body += `Delivery Method: ${deliveryTypeName}%0D%0A`;
+                body += `Subscription: ${subscriptionName}%0D%0A`;
+                body += `Estimated Total: ${orderDetails.calculatedPrice}%0D%0A%0D%0A`;
+                body += `Please confirm its availability and provide payment details so that I may proceed to pay.%0D%0A%0D%0A`;
+                body += `Thank you.%0D%0A%0D%0A`;
+                body += `Best regards,%0D%0A`;
+                body += `[Your Name]%0D%0A`;
+                body += `[Your Phone Number]`;
+                
+                // Open email client
+                window.location.href = `mailto:parchedcompanyltd@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+                
+                // Show success message
+                document.getElementById('alertMessage').textContent = `Your email client is opening with order details for ${orderDetails.quantity} x ${waterTypeName}`;
+                emailAlert.style.display = 'block';
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                  emailAlert.style.display = 'none';
+                }, 5000);
+              }
+
+              // Modify your existing order button event listener
+              orderBtn.addEventListener('click', function() {
+                const waterType = document.getElementById('waterType').value;
+                const quantity = document.getElementById('quantity').value;
+                const deliveryType = document.getElementById('deliveryType').value;
+                const subscription = document.getElementById('subscription').value;
+                
+                // Store order details
+                const orderDetails = {
+                  waterType: waterType,
+                  quantity: quantity,
+                  deliveryType: deliveryType,
+                  subscription: subscription,
+                  calculatedPrice: document.getElementById('totalCost').textContent
+                };
+                
+                localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+                
+                // Send email instead of redirecting to contact page
+                sendOrderEmail(orderDetails);
+              });
+
+              // Add CSS for the alert box
+              const style = document.createElement('style');
+              style.textContent = `
+                .alert-box {
+                  padding: 10px 15px;
+                  border-radius: 8px;
+                  margin-top: 15px;
+                  font-size: 0.9rem;
+                }
+                
+                .alert-success {
+                  background-color: #d4edda;
+                  color: #155724;
+                  border: 1px solid #c3e6cb;
+                }
+              `;
+              document.head.appendChild(style);
+            });     
+                    calculatorResult.appendChild(orderBtn);
         });
-        
-        calculatorResult.appendChild(orderBtn);
-      });
-    </script>
+     </script>
     </body>
-    </html>
+  </html>
