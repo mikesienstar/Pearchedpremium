@@ -38,6 +38,13 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
     }
+    .logo {
+      height: 40px;   /* adjusts logo height */
+      width: auto;    /* keeps proportions */
+      margin-right: 10px;
+      border-radius: 5px; /* optional (remove if not needed) */
+    }
+
 
     .navbar-brand {
       font-weight: 700;
@@ -384,8 +391,9 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <i class="fas fa-tint"></i>Parched Premium
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="assets/images/logo1.jpeg" alt="Parched Premium Logo" class="logo">
+      <span>Parched Premium</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <i class="fas fa-bars"></i>

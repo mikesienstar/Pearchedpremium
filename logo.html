@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perched Premium - Updated Navbar</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --royal-blue: #003399;
+      --gold: #FFD700;
+      --light-blue: #4a86e8;
+      --light-gold: #ffeb99;
+      --dark-blue: #001f66;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding-top: 100px;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      min-height: 100vh;
+    }
+    
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    /* Navbar styling */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      padding: 0.8rem 0;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--royal-blue) !important;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      color: var(--dark-blue) !important;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--gold);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .nav-link:hover {
+      color: var(--royal-blue) !important;
+    }
+    
+    .btn-gold {
+      background: var(--gold);
+      color: var(--dark-blue);
+      border: none;
+      font-weight: 600;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    }
+    
+    .btn-gold:hover {
+      background: var(--light-gold);
+      color: var(--royal-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+    }
+    
+    /* Enhanced logo with water droplet shape and animations */
+    .logo {
+      height: 50px;
+      width: 50px;
+      margin-right: 12px;
+      border-radius: 50% 50% 50% 50%;
+      background: linear-gradient(135deg, var(--royal-blue), var(--light-blue));
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 51, 153, 0.3);
+      animation: float 3s ease-in-out infinite, pulse 2s infinite;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .logo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 51, 153, 0.4);
+    }
+    
+    /* Water droplet inside the logo */
+    .logo::before {
+      content: '';
+      position: absolute;
+      width: 40%;
+      height: 40%;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      top: 15%;
+      left: 30%;
+    }
+    
+    /* Ripple effect */
+    .logo::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px solid rgba(255, 215, 0, 0.6);
+      border-radius: 50%;
+      animation: ripple 2s linear infinite;
+      opacity: 0;
+    }
+    
+    /* Logo text */
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Water wave inside the logo */
+    .water-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50% 50% 0 0;
+      animation: wave 4s linear infinite;
+    }
+    
+    /* Bubbles inside the logo */
+    .bubble {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: bubble-float linear infinite;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 4px 15px rgba(0, 51, 153, 0.3);
+      }
+      50% {
+        box-shadow: 0 4px 20px rgba(0, 51, 153, 0.5);
+      }
+    }
+    
+    @keyframes ripple {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 0.8;
+      }
+      100% {
+        width: 150%;
+        height: 150%;
+        opacity: 0;
+      }
+    }
+    
+    @keyframes wave {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-20px);
+      }
+    }
+    
+    @keyframes bubble-float {
+      0% {
+        transform: translateY(0) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50px) scale(1.5);
+        opacity: 0;
+      }
+    }
+    
+    /* Create multiple bubbles with different properties */
+    .bubble:nth-child(1) {
+      width: 5px;
+      height: 5px;
+      left: 20%;
+      animation-duration: 5s;
+      animation-delay: 0s;
+    }
+    
+    .bubble:nth-child(2) {
+      width: 7px;
+      height: 7px;
+      left: 50%;
+      animation-duration: 4s;
+      animation-delay: 1s;
+    }
+    
+    .bubble:nth-child(3) {
+      width: 4px;
+      height: 4px;
+      left: 70%;
+      animation-duration: 6s;
+      animation-delay: 0.5s;
+    }
+    
+    /* Explanation section */
+    .explanation {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(0, 51, 153, 0.05);
+      border-radius: 10px;
+    }
+    
+    .explanation h2 {
+      color: var(--royal-blue);
+      margin-top: 0;
+    }
+    
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .feature {
+      flex: 1;
+      min-width: 200px;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+    
+    .feature h3 {
+      color: var(--royal-blue);
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+    }
+    
+    .feature h3 i {
+      margin-right: 10px;
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+  <!-- Updated Navbar -->
+  <a class="navbar-brand d-flex align-items-center" href="index.html">
+    <!-- Fallback Logo -->
+    <img src="assets/images/logo1.jpeg" alt="Parched Premium Logo" class="logo fallback-logo me-2">
+  
+    <!-- Animated Logo (image inside the droplet animation) -->
+    <div class="logo animated-logo">
+      <img src="assets/images/logo1.jpeg" alt="Parched Premium Logo" class="logo-img">
+      <div class="water-wave"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+  
+    <!-- Brand Text -->
+    <span class="ms-2">Parched Premium</span>
+  </a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="btn btn-gold ms-2" href="contact.html">Order Now</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h1 class="text-center mb-4">Navbar with Enhanced Water Droplet Logo</h1>
+    <p class="text-center">We've updated your navbar with an animated water droplet logo that captures attention and reinforces your brand identity.</p>
+    
+    <div class="explanation">
+      <h2>Logo Features & Animations</h2>
+      <p>The new logo incorporates several engaging animations to attract attention:</p>
+      
+      <div class="features">
+        <div class="feature">
+          <h3><i class="fas fa-tint"></i> Water Droplet Design</h3>
+          <p>Distinctive droplet shape with gradient blue colors representing purity and freshness.</p>
+        </div>
+        
+        <div class="feature">
+          <h3><i class="fas fa-wave"></i> Floating Animation</h3>
+          <p>Gentle up-and-down motion simulates water movement for a natural feel.</p>
+        </div>
+        
+        <div class="feature">
+          <h3><i class="fas fa-expand"></i> Ripple Effect</h3>
+          <p>Pulsing ripple animation draws attention and suggests energy and vitality.</p>
+        </div>
+        
+        <div class="feature">
+          <h3><i class="fas fa-bubbles"></i> Bubble Animation</h3>
+          <p>Rising bubbles create a dynamic, refreshing appearance that captures attention.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-4 p-3 bg-light rounded">
+      <h3>Implementation Notes:</h3>
+      <p>To use this navbar in your website, simply replace your existing navbar code with this updated version. The logo is created entirely with CSS, so there's no need for an image file.</p>
+      <p>The logo includes hover effects and will scale appropriately on different screen sizes.</p>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Add interactive effects to the logo
+    const logo = document.querySelector('.logo');
+    
+    logo.addEventListener('click', function() {
+      // Create a temporary ripple effect on click
+      const ripple = document.createElement('div');
+      ripple.style.position = 'absolute';
+      ripple.style.width = '100%';
+      ripple.style.height = '100%';
+      ripple.style.border = '2px solid rgba(255, 215, 0, 0.7)';
+      ripple.style.borderRadius = '50%';
+      ripple.style.animation = 'ripple 1s linear';
+      ripple.style.top = '0';
+      ripple.style.left = '0';
+      
+      this.appendChild(ripple);
+      
+      // Remove the ripple after animation completes
+      setTimeout(() => {
+        ripple.remove();
+      }, 1000);
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.padding = '0.5rem 0';
+        navbar.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+      } else {
+        navbar.style.padding = '0.8rem 0';
+        navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+      }
+    });
+  </script>
+</body>
+</html>

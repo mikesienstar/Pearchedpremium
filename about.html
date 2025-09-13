@@ -39,6 +39,13 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
     }
+    .logo {
+      height: 40px;   /* adjusts logo height */
+      width: auto;    /* keeps proportions */
+      margin-right: 10px;
+      border-radius: 5px; /* optional (remove if not needed) */
+    }
+
 
     .navbar-brand {
       font-weight: 700;
@@ -278,14 +285,18 @@
     }
 
     .team-img {
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       object-fit: cover;
       border: 5px solid white;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       margin-bottom: 1.5rem;
     }
+    .team-img-top {
+      object-position: top; /* keeps the head visible only for this image */
+    }
+
 
     .team-name {
       font-weight: 600;
@@ -488,8 +499,9 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <i class="fas fa-tint"></i>Parched Premium
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="assets/images/logo1.jpeg" alt="Parched Premium Logo" class="logo">
+      <span>Parched Premium</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <i class="fas fa-bars"></i>
@@ -588,7 +600,7 @@
       <div class="timeline-item" data-aos="fade-left">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <div class="timeline-year">2023</div>
+          <div class="timeline-year">2022</div>
           <h4>Expansion of Services</h4>
           <p>Launched our home and office delivery service, making it convenient for customers to access our premium water.</p>
         </div>
@@ -604,7 +616,7 @@
       <div class="timeline-item" data-aos="fade-left">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <div class="timeline-year">2023</div>
+          <div class="timeline-year">2024</div>
           <h4>Quality Certification</h4>
           <p>Achieved ISO 9001 certification for our quality management systems and processes.</p>
         </div>
@@ -612,7 +624,7 @@
       <div class="timeline-item" data-aos="fade-right">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <div class="timeline-year">2023</div>
+          <div class="timeline-year">2025</div>
           <h4>Regional Expansion</h4>
           <p>Expanded our operations to three new regions, now serving customers across the country.</p>
         </div>
@@ -691,7 +703,7 @@
     <div class="row">
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="team-member">
-          <img src="https://placehold.co/150x150/003399/FFFFFF/png?text=EO" alt="Enock Osiir" class="team-img">
+          <img src="assets/images/Osiir.jpeg" alt="Enock Osiir" class="team-img">
           <h4 class="team-name">Enock Osiir</h4>
           <p class="team-role">Founder & CEO</p>
           <p>With over 3 years in the water industry, Enock founded Parched Premium with a vision to provide accessible clean water to all communities.</p>
@@ -699,7 +711,7 @@
       </div>
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
         <div class="team-member">
-          <img src="https://placehold.co/150x150/003399/FFFFFF/png?text=MA" alt="Mercy Achieng" class="team-img">
+          <img src="assets/images/Achieng.jpeg" alt="Mercy Achieng" class="team-img">
           <h4 class="team-name">Mercy Achieng</h4>
           <p class="team-role">Operations Director</p>
           <p>Mercy ensures our operations run smoothly and efficiently, maintaining our high standards of quality and service.</p>
@@ -707,7 +719,7 @@
       </div>
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
         <div class="team-member">
-          <img src="https://placehold.co/150x150/003399/FFFFFF/png?text=MN" alt="Mike Ngoya" class="team-img">
+          <img src="assets/images/nani1.png" alt="Mike Ngoya" class="team-img team-img-top">
           <h4 class="team-name">Mike Ngoya</h4>
           <p class="team-role">Head of IT & Digital Operations</p>
           <p>Mike architects the digital systems that power our operations, from the e-commerce webapp to automated delivery logistics, ensuring a seamless customer experience.</p>
@@ -716,7 +728,7 @@
       </div>
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
         <div class="team-member">
-          <img src="https://placehold.co/150x150/003399/FFFFFF/png?text=MM" alt="Moses Mtepe" class="team-img">
+          <img src="assets/images/Mtepe.jpeg" alt="Moses Mtepe"  class="team-img team-img-top">
           <h4 class="team-name">Moses Mtepe</h4>
           <p class="team-role">Quality Assurance Manager</p>
           <p>Moses oversees our rigorous testing processes to ensure every drop of water meets our exceptional quality standards.</p>
