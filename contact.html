@@ -39,7 +39,7 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
     }
-    .logo {
+        .logo {
       height: 40px;   /* adjusts logo height */
       width: auto;    /* keeps proportions */
       margin-right: 10px;
@@ -546,6 +546,198 @@
       opacity: 0.7;
       pointer-events: none;
     }
+
+  /* Add these styles to your existing CSS */
+  .alert-box {
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    display: none;
+  }
+  
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+  }
+  /* Add these styles to your existing CSS */
+  /* Enhanced Form Sections */
+  .order-details-section,
+  .delivery-details-section,
+  .location-fields {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--royal-blue);
+    display: none;
+  }
+
+  /* Input Group Styling */
+  .input-group-prepend .input-group-text {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    font-weight: 500;
+    color: #495057;
+  }
+
+  /* Alert Info Style */
+  .alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    display: none;
+  }
+
+  /* Enhanced Button Styles */
+  .btn-outline-primary {
+    border: 2px solid var(--royal-blue);
+    color: var(--royal-blue);
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: var(--royal-blue);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* Form Section Titles */
+  .form-section-title {
+    color: var(--royal-blue);
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e9ecef;
+  }
+
+  /* Loading State for Buttons */
+  .btn-loading {
+    position: relative;
+    color: transparent !important;
+  }
+
+  .btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Animation for Form Sections */
+  @keyframes fadeIn {
+    from { 
+      opacity: 0; 
+      transform: translateY(10px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  .location-fields, 
+  .order-details-section, 
+  .delivery-details-section {
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  /* Enhanced Error Message Styling */
+  .error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+    font-weight: 500;
+  }
+
+  /* Required Field Indicator */
+  .required-field::after {
+    content: '*';
+    color: #e74c3c;
+    margin-left: 4px;
+  }
+
+  /* Responsive Improvements for Form Sections */
+  @media (max-width: 768px) {
+    .order-details-section,
+    .delivery-details-section,
+    .location-fields {
+      padding: 15px;
+    }
+    
+    .btn-outline-primary {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  /* Focus States for Accessibility */
+  button:focus, 
+  input:focus, 
+  select:focus, 
+  textarea:focus {
+    outline: 2px solid var(--royal-blue);
+    outline-offset: 2px;
+  }
+
+  /* Enhanced Placeholder Styling */
+  .form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+  }
+
+  /* Date Input Styling */
+  input[type="date"] {
+    position: relative;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+
+  /* Custom Select Arrow */
+  .form-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23003399' viewBox='0 0 16 16'%3E%3Cpath d='M8 12L2 6h12L8 12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+  }
   </style>
 </head>
 <body>
@@ -699,57 +891,128 @@
   </div>
 </section>
 
-<!-- Contact Form Section -->
-<section class="py-5 bg-light" id="contact-form">
-  <div class="container">
-    <h2 class="text-center section-title mb-5" data-aos="fade-up">Send Us a Message</h2>
-    
-    <div class="row justify-content-center">
-      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-        <div class="contact-card">
-          <form id="contactForm">
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+
+    <!-- Contact Form Section -->
+    <section class="container mb-5" id="contact-form">
+      <div class="row justify-content-center">
+          <div class="col-lg-10">
+              <div class="contact-form">
+                  <h2 class="mb-4">Send us a Message</h2>
+                  <div id="emailAlert" class="alert-box alert-success"></div>
+                  <div id="infoAlert" class="alert-box alert-info"></div>
+                  <form id="contactForm">
+                      <div class="row">
+                          <div class="col-md-6 mb-3">
+                              <label for="name" class="form-label">Full Name *</label>
+                              <input type="text" class="form-control" id="name" placeholder="Enter your full name (First & Last Name)">
+                              <div class="error-message" id="nameError">Please enter your full name</div>
+                          </div>
+                          <div class="col-md-6 mb-3">
+                              <label for="email" class="form-label">Email Address *</label>
+                              <input type="email" class="form-control" id="email" placeholder="your.email@example.com">
+                              <div class="error-message" id="emailError">Please enter a valid email address</div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6 mb-3">
+                              <label for="phone" class="form-label">Phone Number *</label>
+                              <div class="input-group">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text">+254</span>
+                                  </div>
+                                  <input type="tel" class="form-control" id="phone" placeholder="700123456" maxlength="9">
+                              </div>
+                              <div class="error-message" id="phoneError">Please enter a valid 9-digit phone number (after +254)</div>
+                          </div>
+                          <div class="col-md-6 mb-3">
+                              <label for="subject" class="form-label">Subject *</label>
+                              <select class="form-select" id="subject">
+                                  <option value="">Select a subject</option>
+                                  <option value="General Inquiry">General Inquiry</option>
+                                  <option value="Order Placement">Order Placement</option>
+                                  <option value="Delivery Inquiry">Delivery Inquiry</option>
+                                  <option value="Support">Support</option>
+                                  <option value="Feedback">Feedback</option>
+                                  <option value="Partnership">Partnership</option>
+                                  <option value="Other">Other</option>
+                              </select>
+                              <div class="error-message" id="subjectError">Please select a subject</div>
+                          </div>
+                      </div>
+                      
+                      <!-- Location Fields -->
+                      <div class="location-fields" id="locationFields">
+                          <h5 class="mb-3 mt-4">Delivery Location Details</h5>
+                          <div class="row">
+                              <div class="col-md-6 mb-3">
+                                  <label for="county" class="form-label">County *</label>
+                                  <input type="text" class="form-control" id="county" placeholder="e.g. Kilifi County">
+                                  <div class="error-message" id="countyError">Please enter your county</div>
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                  <label for="subcounty" class="form-label">Sub-County *</label>
+                                  <input type="text" class="form-control" id="subcounty" placeholder="e.g. Kilifi South">
+                                  <div class="error-message" id="subcountyError">Please enter your sub-county</div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6 mb-3">
+                                  <label for="location" class="form-label">Location *</label>
+                                  <input type="text" class="form-control" id="location" placeholder="e.g. Kilifi Town">
+                                  <div class="error-message" id="locationError">Please enter your location</div>
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                  <label for="sublocation" class="form-label">Sub-Location / Estate</label>
+                                  <input type="text" class="form-control" id="sublocation" placeholder="e.g. Mnarani Estate">
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <!-- Order Details Section -->
+                      <div class="order-details-section" id="orderDetailsSection">
+                          <h5 class="mb-3">Order Information</h5>
+                          <p>For detailed order placement, please use our order calculator.</p>
+                          <button type="button" id="goToOrderBtn" class="btn btn-outline-primary">Go to Order Calculator</button>
+                          <div class="mt-3" id="orderInfo"></div>
+                      </div>
+                      
+                      <!-- Delivery Details Section -->
+                      <div class="delivery-details-section" id="deliveryDetailsSection">
+                          <h5 class="mb-3">Delivery Details</h5>
+                          <div class="row">
+                              <div class="col-md-6 mb-3">
+                                  <label for="deliveryDate" class="form-label">Preferred Delivery Date *</label>
+                                  <input type="date" class="form-control" id="deliveryDate" min="">
+                                  <div class="error-message" id="deliveryDateError">Please select a delivery date</div>
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                  <label for="deliveryTime" class="form-label">Preferred Delivery Time *</label>
+                                  <select class="form-select" id="deliveryTime">
+                                      <option value="">Select time window</option>
+                                      <option value="Morning (8AM - 12PM)">Morning (8AM - 12PM)</option>
+                                      <option value="Afternoon (12PM - 4PM)">Afternoon (12PM - 4PM)</option>
+                                      <option value="Evening (4PM - 8PM)">Evening (4PM - 8PM)</option>
+                                  </select>
+                                  <div class="error-message" id="deliveryTimeError">Please select a delivery time</div>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="deliveryNotes" class="form-label">Delivery Instructions</label>
+                              <textarea class="form-control" id="deliveryNotes" rows="2" placeholder="Any specific delivery instructions or landmarks..."></textarea>
+                          </div>
+                      </div>
+                      
+                      <div class="mb-4">
+                          <label for="message" class="form-label">Message *</label>
+                          <textarea class="form-control" id="message" rows="5" placeholder="Please provide details of your inquiry..."></textarea>
+                          <div class="error-message" id="messageError">Please enter your message</div>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Send Message</button>
+                  </form>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" placeholder="Your Email" required>
-              </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="phone" class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" id="phone" placeholder="Your Phone Number">
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="subject" class="form-label">Subject</label>
-                <select class="form-select" id="subject">
-                  <option value="Select Subject">Select Subject</option>
-                  <option value="General Inquiry">General Inquiry</option>
-                  <option value="Order Placement">Order Placement</option>
-                  <option value="Delivery Question">Delivery Question</option>
-                  <option value="Complaint">Complaint</option>
-                  <option value="Feedback">Feedback</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="mb-3">
-              <label for="message" class="form-label">Message</label>
-              <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea>
-            </div>
-            
-            <button type="submit" class="btn btn-gold w-100" id="submitBtn">Send Message</button>
-          </form>
-        </div>
+          </div>
       </div>
-    </div>
-  </div>
-</section>
+  </section>
 
 <!-- Locations Section -->
 <section class="map-section">
@@ -985,192 +1248,452 @@
       </div>
     </footer>
     
-    <!-- JS Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      // Initialize AOS
-      AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100
-      });
-    
-      // Create water drops dynamically
-      function createWaterDrops() {
-        const hero = document.querySelector('.hero');
-        for (let i = 0; i < 15; i++) {
-          const drop = document.createElement('div');
-          drop.classList.add('water-drop');
-          drop.style.width = `${Math.random() * 15 + 5}px`;
-          drop.style.height = drop.style.width;
-          drop.style.left = `${Math.random() * 100}%`;
-          drop.style.animationDelay = `${Math.random() * 8}s`;
-          hero.appendChild(drop);
-        }
-      }
-    
-      // Enhanced Contact Page Functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        // Check if user came from order page
-        const urlParams = new URLSearchParams(window.location.search);
-        const action = urlParams.get('action');
-        
-        if (action === 'order') {
-          // Pre-fill the form with order information
-          const selectedService = localStorage.getItem('selectedService');
-          const orderDetails = JSON.parse(localStorage.getItem('orderDetails') || '{}');
-          
-          const subjectSelect = document.getElementById('subject');
-          if (subjectSelect) {
-            subjectSelect.value = 'Order Placement';
-          }
-          
-          const messageTextarea = document.getElementById('message');
-          if (messageTextarea) {
-            let message = 'I would like to place an order for: ';
-            
-            if (selectedService) {
-              message += selectedService;
-            } else if (orderDetails.waterType) {
-              message += `${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
-              if (orderDetails.calculatedPrice) {
-                message += ` (Approx. ${orderDetails.calculatedPrice})`;
-              }
-            }
-            
-            messageTextarea.value = message;
-          }
-          
-          // Scroll to form
-          document.getElementById('contact-form').scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-        
-        // Contact form submission
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-          contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Validate form
-            if (!name || !email || !message) {
-              alert('Please fill in all required fields');
-              return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-              alert('Please enter a valid email address');
-              return;
-            }
-            
-            // Phone validation (basic)
-            if (phone && !/^[\d\s\-\+\(\)]+$/.test(phone)) {
-              alert('Please enter a valid phone number');
-              return;
-            }
-            
-            // Show loading state
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            
-            // Simulate form submission
-            setTimeout(() => {
-              // Show success message
-              alert(`Thank you, ${name}! Your ${subject.toLowerCase()} has been received. We will contact you at ${email} or ${phone} soon.`);
-              
-              // Reset form
-              contactForm.reset();
-              
-              // Clear stored order data
-              localStorage.removeItem('selectedService');
-              localStorage.removeItem('orderDetails');
-              
-              // Reset button
-              submitBtn.disabled = false;
-              submitBtn.textContent = originalText;
-            }, 2000);
-          });
-        }
-        
-        // WhatsApp order functionality
-        const whatsappButtons = document.querySelectorAll('a[href*="wa.me"]');
-        whatsappButtons.forEach(button => {
-          button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Get potential order details
-            const selectedService = localStorage.getItem('selectedService');
-            const orderDetails = JSON.parse(localStorage.getItem('orderDetails') || '{}');
-            
-            // Create WhatsApp message
-            let message = "Hello ParchedPremium! I'm interested in ";
-            
-            if (selectedService) {
-              message += selectedService;
-            } else if (orderDetails.waterType) {
-              message += `ordering ${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
-            } else {
-              message += "your water services";
-            }
-            
-            message += ". Please provide more information.";
-            
-            // Encode message for URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Open WhatsApp with pre-filled message
-            window.open(`https://wa.me/254714369851?text=${encodedMessage}`, '_blank');
-          });
-        });
-        
-        // Email order functionality
-        const emailButtons = document.querySelectorAll('a[href^="mailto"]');
-        emailButtons.forEach(button => {
-          button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Get potential order details
-            const selectedService = localStorage.getItem('selectedService');
-            const orderDetails = JSON.parse(localStorage.getItem('orderDetails') || '{}');
-            
-            // Create email subject and body
-            let subject = "Inquiry about ParchedPremium Services";
-            let body = "Hello ParchedPremium Team,\n\nI'm interested in ";
-            
-            if (selectedService) {
-              subject = `Order Inquiry: ${selectedService}`;
-              body += selectedService;
-            } else if (orderDetails.waterType) {
-              subject = `Order Inquiry: ${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
-              body += `ordering ${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
-            } else {
-              body += "your water services";
-            }
-            
-            body += ".\n\nPlease send me more information about pricing and delivery options.\n\nThank you.";
-            
-            // Open email client with pre-filled content
-            window.location.href = `mailto:parchedcompanyltd@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          });
-        });
-    
-        // Initialize when page loads
-        createWaterDrops();
-      });
-    </script>
-    </body>
-    </html>
+ 
+ <!-- JS Libraries -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+ <script>
+   // Initialize AOS
+   AOS.init({
+     duration: 1000,
+     once: true,
+     offset: 100
+   });
+
+   // Create water drops dynamically
+   function createWaterDrops() {
+     const hero = document.querySelector('.hero');
+     for (let i = 0; i < 15; i++) {
+       const drop = document.createElement('div');
+       drop.classList.add('water-drop');
+       drop.style.width = `${Math.random() * 15 + 5}px`;
+       drop.style.height = drop.style.width;
+       drop.style.left = `${Math.random() * 100}%`;
+       drop.style.animationDelay = `${Math.random() * 8}s`;
+       hero.appendChild(drop);
+     }
+   }
+   
+   // Form validation function
+   function validateForm() {
+     let isValid = true;
+     
+     // Reset error messages
+     const errorElements = document.querySelectorAll('.error-message');
+     errorElements.forEach(el => el.style.display = 'none');
+     
+     // Validate name (require first and last name)
+     const name = document.getElementById('name').value.trim();
+     if (!name || name.split(' ').length < 2) {
+       document.getElementById('nameError').textContent = 'Please enter your full name (first and last name)';
+       document.getElementById('nameError').style.display = 'block';
+       isValid = false;
+     }
+     
+     // Validate email
+     const email = document.getElementById('email').value.trim();
+     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     if (!email || !emailRegex.test(email)) {
+       document.getElementById('emailError').style.display = 'block';
+       isValid = false;
+     }
+     
+     // Validate phone (must be exactly 9 digits after +254)
+     const phone = document.getElementById('phone').value.trim();
+     if (!phone || !/^\d{9}$/.test(phone)) {
+       document.getElementById('phoneError').style.display = 'block';
+       isValid = false;
+     }
+     
+     // Validate subject
+     const subject = document.getElementById('subject').value;
+     if (!subject) {
+       document.getElementById('subjectError').style.display = 'block';
+       isValid = false;
+     }
+     
+     // Validate location fields if shown
+     if (document.getElementById('locationFields').style.display === 'block') {
+       const county = document.getElementById('county').value.trim();
+       const subcounty = document.getElementById('subcounty').value.trim();
+       const location = document.getElementById('location').value.trim();
+       
+       if (!county) {
+         document.getElementById('countyError').style.display = 'block';
+         isValid = false;
+       }
+       if (!subcounty) {
+         document.getElementById('subcountyError').style.display = 'block';
+         isValid = false;
+       }
+       if (!location) {
+         document.getElementById('locationError').style.display = 'block';
+         isValid = false;
+       }
+     }
+     
+     // Validate delivery fields if shown
+     if (document.getElementById('deliveryDetailsSection').style.display === 'block') {
+       const deliveryDate = document.getElementById('deliveryDate').value;
+       const deliveryTime = document.getElementById('deliveryTime').value;
+       
+       if (!deliveryDate) {
+         document.getElementById('deliveryDateError').style.display = 'block';
+         isValid = false;
+       }
+       if (!deliveryTime) {
+         document.getElementById('deliveryTimeError').style.display = 'block';
+         isValid = false;
+       }
+     }
+     
+     // Validate message
+     const message = document.getElementById('message').value.trim();
+     if (!message) {
+       document.getElementById('messageError').style.display = 'block';
+       isValid = false;
+     }
+     
+     return isValid;
+   }
+   
+   // Send email function
+   function sendContactEmail(formData) {
+     const { name, email, phone, subject, message } = formData;
+     
+     // Get order details if available
+     const orderDetails = JSON.parse(localStorage.getItem('orderDetails') || '{}');
+     const selectedService = localStorage.getItem('selectedService');
+     
+     // Get location details
+     const county = document.getElementById('county').value.trim();
+     const subcounty = document.getElementById('subcounty').value.trim();
+     const location = document.getElementById('location').value.trim();
+     const sublocation = document.getElementById('sublocation').value.trim();
+     
+     // Get delivery details if applicable
+     const deliveryDate = document.getElementById('deliveryDate').value;
+     const deliveryTime = document.getElementById('deliveryTime').value;
+     const deliveryNotes = document.getElementById('deliveryNotes').value.trim();
+     
+     // Create email subject
+     let emailSubject = subject;
+     if (subject === 'Order Placement') {
+       if (selectedService) {
+         emailSubject = `Order for ${selectedService}`;
+       } else if (orderDetails.waterType) {
+         emailSubject = `Order for ${orderDetails.quantity} x ${orderDetails.waterType}`;
+       }
+     }
+     
+     // Create email body
+     let emailBody = `Name: ${name}\n`;
+     emailBody += `Email: ${email}\n`;
+     emailBody += `Phone: +254${phone}\n`;
+     emailBody += `Subject: ${subject}\n\n`;
+     
+     // Add location details if provided
+     if (county) {
+       emailBody += `--- Location Details ---\n`;
+       emailBody += `County: ${county}\n`;
+       emailBody += `Sub-County: ${subcounty}\n`;
+       emailBody += `Location: ${location}\n`;
+       if (sublocation) emailBody += `Sub-Location: ${sublocation}\n`;
+       emailBody += `\n`;
+     }
+     
+     // Add order details if available
+     if (subject === 'Order Placement' && (selectedService || orderDetails.waterType)) {
+       emailBody += `--- Order Details ---\n`;
+       if (selectedService) {
+         emailBody += `Service: ${selectedService}\n`;
+       }
+       if (orderDetails.waterType) {
+         emailBody += `Water Type: ${orderDetails.waterType}\n`;
+       }
+       if (orderDetails.quantity) {
+         emailBody += `Quantity: ${orderDetails.quantity}\n`;
+       }
+       if (orderDetails.deliveryType) {
+         emailBody += `Delivery Type: ${orderDetails.deliveryType}\n`;
+       }
+       if (orderDetails.subscription) {
+         emailBody += `Subscription: ${orderDetails.subscription}\n`;
+       }
+       if (orderDetails.calculatedPrice) {
+         emailBody += `Estimated Price: ${orderDetails.calculatedPrice}\n`;
+       }
+       emailBody += `\n`;
+     }
+     
+     // Add delivery details if provided
+     if (deliveryDate && deliveryTime) {
+       emailBody += `--- Delivery Preferences ---\n`;
+       emailBody += `Preferred Date: ${deliveryDate}\n`;
+       emailBody += `Preferred Time: ${deliveryTime}\n`;
+       if (deliveryNotes) emailBody += `Delivery Instructions: ${deliveryNotes}\n`;
+       emailBody += `\n`;
+     }
+     
+     emailBody += `--- Message ---\n`;
+     emailBody += `${message}\n`;
+     
+     // Open email client
+     window.location.href = `mailto:parchedcompanyltd@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+     
+     // Show success message
+     const emailAlert = document.getElementById('emailAlert');
+     if (subject === 'Order Placement') {
+       if (selectedService) {
+         emailAlert.textContent = `Your email client is opening with order details for ${selectedService}`;
+       } else if (orderDetails.waterType) {
+         emailAlert.textContent = `Your email client is opening with order details for ${orderDetails.quantity} x ${orderDetails.waterType}`;
+       } else {
+         emailAlert.textContent = `Your email client is opening with your order request`;
+       }
+     } else {
+       emailAlert.textContent = `Thank you, ${name}! Your email client is opening with your message.`;
+     }
+     emailAlert.style.display = 'block';
+     
+     // Hide message after 5 seconds
+     setTimeout(() => {
+       emailAlert.style.display = 'none';
+     }, 5000);
+   }
+
+   // Enhanced Contact Page Functionality
+   document.addEventListener('DOMContentLoaded', function() {
+     // Set minimum date for delivery to today
+     const today = new Date().toISOString().split('T')[0];
+     document.getElementById('deliveryDate').min = today;
+     
+     // Check if user came from order page
+     const urlParams = new URLSearchParams(window.location.search);
+     const action = urlParams.get('action');
+     
+     if (action === 'order') {
+       // Pre-fill the form with order information
+       const selectedService = localStorage.getItem('selectedService');
+       const orderDetails = JSON.parse(localStorage.getItem('orderDetails') || '{}');
+       
+       const subjectSelect = document.getElementById('subject');
+       if (subjectSelect) {
+         subjectSelect.value = 'Order Placement';
+         // Show location fields for orders
+         document.getElementById('locationFields').style.display = 'block';
+         document.getElementById('orderDetailsSection').style.display = 'block';
+         
+         // Display order info
+         const orderInfo = document.getElementById('orderInfo');
+         if (selectedService) {
+           orderInfo.innerHTML = `<p class="mb-1"><strong>Service:</strong> ${selectedService}</p>`;
+         } else if (orderDetails.waterType) {
+           orderInfo.innerHTML = `
+             <p class="mb-1"><strong>Water Type:</strong> ${orderDetails.waterType}</p>
+             <p class="mb-1"><strong>Quantity:</strong> ${orderDetails.quantity}</p>
+             ${orderDetails.calculatedPrice ? `<p class="mb-1"><strong>Estimated Price:</strong> ${orderDetails.calculatedPrice}</p>` : ''}
+           `;
+         }
+       }
+       
+       const messageTextarea = document.getElementById('message');
+       if (messageTextarea) {
+         let message = 'I would like to place an order for: ';
+         
+         if (selectedService) {
+           message += selectedService;
+         } else if (orderDetails.waterType) {
+           message += `${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
+           if (orderDetails.calculatedPrice) {
+             message += ` (Approx. ${orderDetails.calculatedPrice})`;
+           }
+         }
+         
+         messageTextarea.value = message;
+       }
+       
+       // Scroll to form
+       document.getElementById('contact-form').scrollIntoView({
+         behavior: 'smooth'
+       });
+     }
+     
+     // Subject change handler
+     const subjectSelect = document.getElementById('subject');
+     subjectSelect.addEventListener('change', function() {
+       const subject = this.value;
+       const locationFields = document.getElementById('locationFields');
+       const orderDetailsSection = document.getElementById('orderDetailsSection');
+       const deliveryDetailsSection = document.getElementById('deliveryDetailsSection');
+       const infoAlert = document.getElementById('infoAlert');
+       
+       // Reset sections
+       orderDetailsSection.style.display = 'none';
+       deliveryDetailsSection.style.display = 'none';
+       infoAlert.style.display = 'none';
+       
+       if (subject === 'Order Placement') {
+         locationFields.style.display = 'block';
+         orderDetailsSection.style.display = 'block';
+         infoAlert.textContent = 'For detailed orders, please use our order calculator first.';
+         infoAlert.style.display = 'block';
+       } else if (subject === 'Delivery Inquiry') {
+         locationFields.style.display = 'block';
+         deliveryDetailsSection.style.display = 'block';
+       } else if (subject) {
+         locationFields.style.display = 'block';
+       } else {
+         locationFields.style.display = 'none';
+       }
+     });
+     
+     // Go to order button handler
+     document.getElementById('goToOrderBtn').addEventListener('click', function() {
+       window.location.href = 'services.html#calculator';
+     });
+     
+     // Contact form submission
+     const contactForm = document.getElementById('contactForm');
+     if (contactForm) {
+       contactForm.addEventListener('submit', function(e) {
+         e.preventDefault();
+         
+         // Validate form
+         if (!validateForm()) {
+           return;
+         }
+         
+         // Get form values
+         const name = document.getElementById('name').value.trim();
+         const email = document.getElementById('email').value.trim();
+         const phone = document.getElementById('phone').value.trim();
+         const subject = document.getElementById('subject').value;
+         const message = document.getElementById('message').value.trim();
+         
+         // Show loading state
+         const submitBtn = document.getElementById('submitBtn');
+         const originalText = submitBtn.textContent;
+         
+         submitBtn.disabled = true;
+         submitBtn.textContent = 'Opening Email...';
+         
+         // Send email
+         sendContactEmail({ name, email, phone, subject, message });
+         
+         // Reset button after a short delay
+         setTimeout(() => {
+           submitBtn.disabled = false;
+           submitBtn.textContent = originalText;
+           
+           // Reset form (except for order details)
+           if (subject !== 'Order Placement') {
+             contactForm.reset();
+           }
+           
+           // Clear stored order data after submission
+           localStorage.removeItem('selectedService');
+           localStorage.removeItem('orderDetails');
+         }, 2000);
+       });
+     }
+     
+     // Real-time validation on input change
+     const inputs = document.querySelectorAll('#contactForm input, #contactForm textarea, #contactForm select');
+     inputs.forEach(input => {
+       input.addEventListener('blur', function() {
+         validateForm();
+       });
+       
+       input.addEventListener('input', function() {
+         // Clear error when user starts typing
+         const errorId = this.id + 'Error';
+         const errorElement = document.getElementById(errorId);
+         if (errorElement) {
+           errorElement.style.display = 'none';
+         }
+         
+         // Phone number validation (only allow digits, max 9)
+         if (this.id === 'phone') {
+           this.value = this.value.replace(/\D/g, '').slice(0, 9);
+         }
+         
+         // Name validation (prevent numbers and special characters)
+         if (this.id === 'name') {
+           this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+         }
+       });
+     });
+     
+     // WhatsApp order functionality
+     const whatsappButtons = document.querySelectorAll('a[href*="wa.me"]');
+     whatsappButtons.forEach(button => {
+       button.addEventListener('click', function(e) {
+         e.preventDefault();
+         
+         // Get potential order details
+         const selectedService = localStorage.getItem('selectedService');
+         const orderDetails = JSON.parse(localStorage.getItem('orderDetails') || '{}');
+         
+         // Create WhatsApp message
+         let message = "Hello ParchedPremium! I'm interested in ";
+         
+         if (selectedService) {
+           message += selectedService;
+         } else if (orderDetails.waterType) {
+           message += `ordering ${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
+         } else {
+           message += "your water services";
+         }
+         
+         message += ". Please provide more information.";
+         
+         // Encode message for URL
+         const encodedMessage = encodeURIComponent(message);
+         
+         // Open WhatsApp with pre-filled message
+         window.open(`https://wa.me/254714369851?text=${encodedMessage}`, '_blank');
+       });
+     });
+     
+     // Email order functionality
+     const emailButtons = document.querySelectorAll('a[href^="mailto"]');
+     emailButtons.forEach(button => {
+       button.addEventListener('click', function(e) {
+         e.preventDefault();
+         
+         // Get potential order details
+         const selectedService = localStorage.getItem('selectedService');
+         const orderDetails = JSON.parse(localStorage.getItem('orderDetails') || '{}');
+         
+         // Create email subject and body
+         let subject = "Inquiry about ParchedPremium Services";
+         let body = "Hello ParchedPremium Team,\n\nI'm interested in ";
+         
+         if (selectedService) {
+           subject = `Order Inquiry: ${selectedService}`;
+           body += selectedService;
+         } else if (orderDetails.waterType) {
+           subject = `Order Inquiry: ${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
+           body += `ordering ${orderDetails.quantity} x ${orderDetails.waterType.toUpperCase()}`;
+         } else {
+           body += "your water services";
+         }
+         
+         body += ".\n\nPlease send me more information about pricing and delivery options.\n\nThank you.";
+         
+         // Open email client with pre-filled content
+         window.location.href = `mailto:parchedcompanyltd@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+       });
+     });
+
+
+     // Initialize when page loads
+     createWaterDrops();
+   });
+ </script>
+</body>
+</html>
+
+
+
