@@ -384,6 +384,95 @@
       opacity: 0.7;
       pointer-events: none;
     }
+
+  /* Enhanced Homepage Contact Form Styles */
+  #home-contact-form {
+    position: relative;
+  }
+  
+  .form-feedback {
+    display: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  .form-feedback.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .form-feedback.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .form-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    border-radius: 10px;
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--royal-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Enhanced input styling */
+  #home-contact-form .form-control {
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+  }
+  
+  #home-contact-form .form-control:focus {
+    border-color: var(--royal-blue);
+    box-shadow: 0 0 0 0.25rem rgba(0, 51, 153, 0.15);
+  }
+  
+  #home-contact-form .form-control.error {
+    border-color: #e74c3c;
+  }
+  
+  /* Button loading state */
+  .btn-loading {
+    position: relative;
+    color: transparent !important;
+  }
+  
+  .btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+  }
+
   </style>
 </head>
 <body>
@@ -565,29 +654,38 @@
   </div>
 </section>
 
-<!-- Contact Section -->
+<!-- Updated Homepage Contact Form Section -->
 <section id="contact" class="py-5 bg-light">
   <div class="container">
     <h2 class="text-center section-title mb-4" data-aos="fade-up">Get In Touch</h2>
     <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">Have questions or ready to place an order? Contact us today!</p>
     <div class="row justify-content-center">
       <div class="col-md-8" data-aos="fade-up" data-aos-delay="200">
+        <div class="form-feedback" id="form-feedback"></div>
         <form id="home-contact-form">
+          <div class="form-loading" id="form-loading">
+            <div class="spinner"></div>
+          </div>
           <div class="row">
             <div class="col-md-6 mb-3">
-              <input type="text" class="form-control form-control-lg" placeholder="Your Name" required id="contact-name">
+              <input type="text" class="form-control form-control-lg" placeholder="Your Name *" required id="contact-name">
+              <div class="error-message" id="name-error">Please enter your name</div>
             </div>
             <div class="col-md-6 mb-3">
-              <input type="email" class="form-control form-control-lg" placeholder="Your Email" required id="contact-email">
+              <input type="email" class="form-control form-control-lg" placeholder="Your Email *" required id="contact-email">
+              <div class="error-message" id="email-error">Please enter a valid email address</div>
             </div>
           </div>
           <div class="mb-3">
             <input type="text" class="form-control form-control-lg" placeholder="Subject" id="contact-subject">
           </div>
           <div class="mb-3">
-            <textarea class="form-control form-control-lg" rows="4" placeholder="Message / Order Details" required id="contact-message"></textarea>
+            <textarea class="form-control form-control-lg" rows="4" placeholder="Message / Order Details *" required id="contact-message"></textarea>
+            <div class="error-message" id="message-error">Please enter your message</div>
           </div>
-          <button type="submit" class="btn btn-gold btn-lg w-100" id="contact-submit">Send Message</button>
+          <button type="submit" class="btn btn-gold btn-lg w-100" id="contact-submit">
+            <span class="btn-text">Send Message</span>
+          </button>
         </form>
       </div>
     </div>
@@ -723,46 +821,127 @@
       observer.observe(statsSection);
     }
   });
-
-  // Homepage Contact Form Submission
+  // Enhanced Homepage Contact Form Submission
   document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('home-contact-form');
+    const feedbackEl = document.getElementById('form-feedback');
+    const loadingEl = document.getElementById('form-loading');
     
     if (contactForm) {
+      // Real-time validation
+      const inputs = contactForm.querySelectorAll('input, textarea');
+      inputs.forEach(input => {
+        input.addEventListener('input', function() {
+          this.classList.remove('error');
+          const errorId = this.id + '-error';
+          const errorEl = document.getElementById(errorId);
+          if (errorEl) errorEl.style.display = 'none';
+        });
+      });
+      
       contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Get form values
-        const name = document.getElementById('contact-name').value;
-        const email = document.getElementById('contact-email').value;
-        const subject = document.getElementById('contact-subject').value;
-        const message = document.getElementById('contact-message').value;
+        const name = document.getElementById('contact-name').value.trim();
+        const email = document.getElementById('contact-email').value.trim();
+        const subject = document.getElementById('contact-subject').value.trim();
+        const message = document.getElementById('contact-message').value.trim();
         
-        // Simple validation
-        if (!name || !email || !message) {
-          alert('Please fill in all required fields');
+        // Reset previous errors
+        feedbackEl.style.display = 'none';
+        const errorMessages = contactForm.querySelectorAll('.error-message');
+        errorMessages.forEach(el => el.style.display = 'none');
+        inputs.forEach(input => input.classList.remove('error'));
+        
+        // Validate form
+        let isValid = true;
+        
+        if (!name) {
+          document.getElementById('contact-name').classList.add('error');
+          document.getElementById('name-error').style.display = 'block';
+          isValid = false;
+        }
+        
+        if (!email) {
+          document.getElementById('contact-email').classList.add('error');
+          document.getElementById('email-error').style.display = 'block';
+          isValid = false;
+        } else {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            document.getElementById('contact-email').classList.add('error');
+            document.getElementById('email-error').textContent = 'Please enter a valid email address';
+            document.getElementById('email-error').style.display = 'block';
+            isValid = false;
+          }
+        }
+        
+        if (!message) {
+          document.getElementById('contact-message').classList.add('error');
+          document.getElementById('message-error').style.display = 'block';
+          isValid = false;
+        }
+        
+        if (!isValid) {
+          feedbackEl.textContent = 'Please correct the errors in the form';
+          feedbackEl.className = 'form-feedback error';
+          feedbackEl.style.display = 'block';
           return;
         }
         
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          alert('Please enter a valid email address');
-          return;
-        }
-        
-        // Simulate form submission
+        // Show loading state
         const submitBtn = document.getElementById('contact-submit');
-        const originalText = submitBtn.textContent;
+        const btnText = submitBtn.querySelector('.btn-text');
+        const originalText = btnText.textContent;
         
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        btnText.textContent = 'Sending...';
+        submitBtn.classList.add('btn-loading');
+        loadingEl.style.display = 'flex';
         
+        // Prepare email data - FIXED VERSION
+        const emailSubject = subject || `Contact Form Message from ${name}`;
+        
+        // Create a properly formatted email body with actual line breaks
+        const emailBody = `Hello ParchedPremium Team,
+
+I would like to inquire about the following:
+
+Name: ${name}
+Email: ${email}
+Subject: ${subject || 'General Inquiry'}
+
+Message:
+${message}
+
+Thank you,
+${name}`;
+
+        // Send email via mailto link (opens user's email client)
         setTimeout(() => {
-          alert(`Thank you, ${name}! Your message has been sent successfully. We will contact you at ${email} soon.`);
+          window.location.href = `mailto:parchedcompanyltd@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+          
+          // Show success message
+          feedbackEl.textContent = `Thank you, ${name}! Your email client is opening with your message.`;
+          feedbackEl.className = 'form-feedback success';
+          feedbackEl.style.display = 'block';
+          
+          // Reset form
           contactForm.reset();
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
+          
+          // Reset button
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            btnText.textContent = originalText;
+            submitBtn.classList.remove('btn-loading');
+            loadingEl.style.display = 'none';
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+              feedbackEl.style.display = 'none';
+            }, 5000);
+          }, 2000);
         }, 1500);
       });
     }
